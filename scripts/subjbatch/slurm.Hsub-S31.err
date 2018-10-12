@@ -1,0 +1,86 @@
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+mkdir: cannot create directory '/scratch/keanebp/NeuralMech_sub-S31/input/': No such file or directory
+mkdir: cannot create directory '/scratch/keanebp/NeuralMech_sub-S31/output//analysis': No such file or directory
+mkdir: cannot create directory '/scratch/keanebp/NeuralMech_sub-S31/output//masks': No such file or directory
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+mkdir: cannot create directory '/scratch/keanebp/NeuralMech_sub-S31/input/': No such file or directory
+mkdir: cannot create directory '/scratch/keanebp/NeuralMech_sub-S31/output//analysis': No such file or directory
+mkdir: cannot create directory '/scratch/keanebp/NeuralMech_sub-S31/output//masks': No such file or directory
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+Image Exception : #22 :: ERROR: Could not open image /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/T1w_acpc_dc_restore_brain
+Image Exception : #22 :: ERROR: Could not open image /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/T1w_acpc_dc_restore_brain
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 489: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *viscomp*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 492: popd: directory stack empty
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 526: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *retino*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 529: popd: directory stack empty
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 708: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *viscomp*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 711: popd: directory stack empty
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 731: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *retino*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 734: popd: directory stack empty
+/projects/f_mc1689_1//HCP_v2_prereqs/fix1.065/hcp_fix: line 35: cd: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest: No such file or directory
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 489: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *viscomp*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 492: popd: directory stack empty
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 526: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *retino*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 529: popd: directory stack empty
+mkdir: cannot create directory '/scratch/keanebp': Permission denied
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 708: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *viscomp*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 711: popd: directory stack empty
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 731: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *retino*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 734: popd: directory stack empty
+/projects/f_mc1689_1//HCP_v2_prereqs/fix1.065/hcp_fix: line 35: cd: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest: No such file or directory
+
+While running:
+/gpfs/home/projects/f_mc1689_1/HCP_v2_prereqs/workbench/bin_rh_linux64/../exe_rh_linux64/wb_command -cifti-reduce /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean.dtseries.nii MEAN /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean_mean.dscalar.nii
+
+ERROR: failed to open file '/scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean.dtseries.nii', file does not exist, or folder permissions prevent seeing it
+
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 864: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *viscomp*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 867: popd: directory stack empty
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 869: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *retino*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 872: popd: directory stack empty
+
+While running:
+/gpfs/home/projects/f_mc1689_1/HCP_v2_prereqs/workbench/bin_rh_linux64/../exe_rh_linux64/wb_command -cifti-reduce /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean.dtseries.nii MEAN /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean_mean.dscalar.nii
+
+ERROR: failed to open file '/scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean.dtseries.nii', file does not exist, or folder permissions prevent seeing it
+
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 864: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *viscomp*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 867: popd: directory stack empty
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 869: pushd: /scratch/keanebp/NeuralMech_sub-S31/input//func/: No such file or directory
+ls: cannot access *retino*bold.nii.gz: No such file or directory
+/home/keanebp/projects/NeuralMech/docs/scripts//Step1_hcp_preprocessing_msmall_amarel.sh: line 872: popd: directory stack empty
+
+While running:
+/gpfs/home/projects/f_mc1689_1/HCP_v2_prereqs/workbench/bin_rh_linux64/../exe_rh_linux64/wb_command -surface-vertex-areas /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Native/sub-S31.L.sphere.native.surf.gii /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Native/sub-S31.L.sphere.native.shape.gii
+
+ERROR: File does not exist.
+   Name: sub-S31.L.sphere.native.surf.gii
+   Path: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Native
+
+
+While running:
+/gpfs/home/projects/f_mc1689_1/HCP_v2_prereqs/workbench/bin_rh_linux64/../exe_rh_linux64/wb_command -surface-vertex-areas /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Native/sub-S31.L.sphere.native.surf.gii /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Native/sub-S31.L.sphere.native.shape.gii
+
+ERROR: File does not exist.
+   Name: sub-S31.L.sphere.native.surf.gii
+   Path: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Native
+

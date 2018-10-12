@@ -1,0 +1,364 @@
+This script must be SOURCED to correctly setup the environment prior to running any of the other HCP scripts contained here
+Skipping fMRIVolumeProcessing_prac node
+Skipping fMRIVolumeProcessing_test node
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Rest
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Thu Aug  9 12:45:23 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/RibbonVolumeToSurfaceMapping
+
+ START: RibbonVolumeToSurfaceMapping
+0.472839
+0.978974
+.7425545
+1.2153935
+ END: RibbonVolumeToSurfaceMapping
+Thu Aug  9 12:52:36 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Surface Smoothing
+
+ START: SurfaceSmoothing
+ END: SurfaceSmoothing
+Thu Aug  9 12:52:53 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subcortical Processing
+SubcorticalProcessing.sh: START
+SubcorticalProcessing.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+SubcorticalProcessing.sh: ROIFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/ROIs
+SubcorticalProcessing.sh: FinalfMRIResolution: 2.4
+SubcorticalProcessing.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest
+SubcorticalProcessing.sh: NameOffMRI: Task_Rest
+SubcorticalProcessing.sh: SmoothingFWHM: 2.4
+SubcorticalProcessing.sh: BrainOrdinatesResolution: 2
+SubcorticalProcessing.sh: VolumefMRI: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest
+SubcorticalProcessing.sh: Sigma: 1.01918616034562285127
+SubcorticalProcessing.sh: Creating subject-roi subcortical cifti at differing fMRI resolution
+SubcorticalProcessing.sh: Dilating out zeros
+SubcorticalProcessing.sh: Generate atlas subcortical template cifti
+SubcorticalProcessing.sh: Smoothing and resampling
+SubcorticalProcessing.sh: END
+Thu Aug  9 12:55:45 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Generation of Dense Timeseries
+
+ START: CreateDenseTimeSeries
+ END: CreateDenseTimeSeries
+Thu Aug  9 12:55:59 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Completed
+/scratch/keanebp/NeuralMech_sub-S31/input/func ~/projects/NeuralMech/docs/scripts
+Viscomp Task runs for sub-S31 are 4
+~/projects/NeuralMech/docs/scripts
+Thu Aug  9 12:55:59 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Viscomp1
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Thu Aug  9 12:56:00 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp1/RibbonVolumeToSurfaceMapping
+
+ START: RibbonVolumeToSurfaceMapping
+0.460781
+0.979121
+.7487305
+1.2095115
+ END: RibbonVolumeToSurfaceMapping
+Thu Aug  9 13:00:20 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Surface Smoothing
+
+ START: SurfaceSmoothing
+ END: SurfaceSmoothing
+Thu Aug  9 13:00:27 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subcortical Processing
+SubcorticalProcessing.sh: START
+SubcorticalProcessing.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+SubcorticalProcessing.sh: ROIFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/ROIs
+SubcorticalProcessing.sh: FinalfMRIResolution: 2.4
+SubcorticalProcessing.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp1
+SubcorticalProcessing.sh: NameOffMRI: Task_Viscomp1
+SubcorticalProcessing.sh: SmoothingFWHM: 2.4
+SubcorticalProcessing.sh: BrainOrdinatesResolution: 2
+SubcorticalProcessing.sh: VolumefMRI: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp1/Task_Viscomp1
+SubcorticalProcessing.sh: Sigma: 1.01918616034562285127
+SubcorticalProcessing.sh: Creating subject-roi subcortical cifti at differing fMRI resolution
+SubcorticalProcessing.sh: Dilating out zeros
+SubcorticalProcessing.sh: Generate atlas subcortical template cifti
+SubcorticalProcessing.sh: Smoothing and resampling
+SubcorticalProcessing.sh: END
+Thu Aug  9 13:01:37 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Generation of Dense Timeseries
+
+ START: CreateDenseTimeSeries
+ END: CreateDenseTimeSeries
+Thu Aug  9 13:01:42 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Completed
+Thu Aug  9 13:01:42 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Viscomp2
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Thu Aug  9 13:01:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp2/RibbonVolumeToSurfaceMapping
+
+ START: RibbonVolumeToSurfaceMapping
+0.479013
+0.978552
+.7390455
+1.2180585
+ END: RibbonVolumeToSurfaceMapping
+Thu Aug  9 13:06:02 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Surface Smoothing
+
+ START: SurfaceSmoothing
+ END: SurfaceSmoothing
+Thu Aug  9 13:06:09 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subcortical Processing
+SubcorticalProcessing.sh: START
+SubcorticalProcessing.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+SubcorticalProcessing.sh: ROIFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/ROIs
+SubcorticalProcessing.sh: FinalfMRIResolution: 2.4
+SubcorticalProcessing.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp2
+SubcorticalProcessing.sh: NameOffMRI: Task_Viscomp2
+SubcorticalProcessing.sh: SmoothingFWHM: 2.4
+SubcorticalProcessing.sh: BrainOrdinatesResolution: 2
+SubcorticalProcessing.sh: VolumefMRI: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp2/Task_Viscomp2
+SubcorticalProcessing.sh: Sigma: 1.01918616034562285127
+SubcorticalProcessing.sh: Creating subject-roi subcortical cifti at differing fMRI resolution
+SubcorticalProcessing.sh: Dilating out zeros
+SubcorticalProcessing.sh: Generate atlas subcortical template cifti
+SubcorticalProcessing.sh: Smoothing and resampling
+SubcorticalProcessing.sh: END
+Thu Aug  9 13:07:15 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Generation of Dense Timeseries
+
+ START: CreateDenseTimeSeries
+ END: CreateDenseTimeSeries
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Completed
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Viscomp3
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Thu Aug  9 13:07:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp3/RibbonVolumeToSurfaceMapping
+
+ START: RibbonVolumeToSurfaceMapping
+0.486673
+0.976768
+.7334315
+1.2201045
+ END: RibbonVolumeToSurfaceMapping
+Thu Aug  9 13:11:41 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Surface Smoothing
+
+ START: SurfaceSmoothing
+ END: SurfaceSmoothing
+Thu Aug  9 13:11:48 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subcortical Processing
+SubcorticalProcessing.sh: START
+SubcorticalProcessing.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+SubcorticalProcessing.sh: ROIFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/ROIs
+SubcorticalProcessing.sh: FinalfMRIResolution: 2.4
+SubcorticalProcessing.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp3
+SubcorticalProcessing.sh: NameOffMRI: Task_Viscomp3
+SubcorticalProcessing.sh: SmoothingFWHM: 2.4
+SubcorticalProcessing.sh: BrainOrdinatesResolution: 2
+SubcorticalProcessing.sh: VolumefMRI: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp3/Task_Viscomp3
+SubcorticalProcessing.sh: Sigma: 1.01918616034562285127
+SubcorticalProcessing.sh: Creating subject-roi subcortical cifti at differing fMRI resolution
+SubcorticalProcessing.sh: Dilating out zeros
+SubcorticalProcessing.sh: Generate atlas subcortical template cifti
+SubcorticalProcessing.sh: Smoothing and resampling
+SubcorticalProcessing.sh: END
+Thu Aug  9 13:12:59 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Generation of Dense Timeseries
+
+ START: CreateDenseTimeSeries
+ END: CreateDenseTimeSeries
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Completed
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Viscomp4
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Thu Aug  9 13:13:05 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp4/RibbonVolumeToSurfaceMapping
+
+ START: RibbonVolumeToSurfaceMapping
+0.544932
+0.977668
+.7052020
+1.2501340
+ END: RibbonVolumeToSurfaceMapping
+Thu Aug  9 13:17:24 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Surface Smoothing
+
+ START: SurfaceSmoothing
+ END: SurfaceSmoothing
+Thu Aug  9 13:17:31 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subcortical Processing
+SubcorticalProcessing.sh: START
+SubcorticalProcessing.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+SubcorticalProcessing.sh: ROIFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/ROIs
+SubcorticalProcessing.sh: FinalfMRIResolution: 2.4
+SubcorticalProcessing.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp4
+SubcorticalProcessing.sh: NameOffMRI: Task_Viscomp4
+SubcorticalProcessing.sh: SmoothingFWHM: 2.4
+SubcorticalProcessing.sh: BrainOrdinatesResolution: 2
+SubcorticalProcessing.sh: VolumefMRI: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Viscomp4/Task_Viscomp4
+SubcorticalProcessing.sh: Sigma: 1.01918616034562285127
+SubcorticalProcessing.sh: Creating subject-roi subcortical cifti at differing fMRI resolution
+SubcorticalProcessing.sh: Dilating out zeros
+SubcorticalProcessing.sh: Generate atlas subcortical template cifti
+SubcorticalProcessing.sh: Smoothing and resampling
+SubcorticalProcessing.sh: END
+Thu Aug  9 13:18:38 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Generation of Dense Timeseries
+
+ START: CreateDenseTimeSeries
+ END: CreateDenseTimeSeries
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Completed
+/scratch/keanebp/NeuralMech_sub-S31/input/func ~/projects/NeuralMech/docs/scripts
+Retino Task runs for sub-S31 are 3
+~/projects/NeuralMech/docs/scripts
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Retino1
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Thu Aug  9 13:18:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino1/RibbonVolumeToSurfaceMapping
+
+ START: RibbonVolumeToSurfaceMapping
+0.486062
+0.978975
+.7359440
+1.2220060
+ END: RibbonVolumeToSurfaceMapping
+Thu Aug  9 13:23:13 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Surface Smoothing
+
+ START: SurfaceSmoothing
+ END: SurfaceSmoothing
+Thu Aug  9 13:23:21 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subcortical Processing
+SubcorticalProcessing.sh: START
+SubcorticalProcessing.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+SubcorticalProcessing.sh: ROIFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/ROIs
+SubcorticalProcessing.sh: FinalfMRIResolution: 2.4
+SubcorticalProcessing.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino1
+SubcorticalProcessing.sh: NameOffMRI: Task_Retino1
+SubcorticalProcessing.sh: SmoothingFWHM: 2.4
+SubcorticalProcessing.sh: BrainOrdinatesResolution: 2
+SubcorticalProcessing.sh: VolumefMRI: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino1/Task_Retino1
+SubcorticalProcessing.sh: Sigma: 1.01918616034562285127
+SubcorticalProcessing.sh: Creating subject-roi subcortical cifti at differing fMRI resolution
+SubcorticalProcessing.sh: Dilating out zeros
+SubcorticalProcessing.sh: Generate atlas subcortical template cifti
+SubcorticalProcessing.sh: Smoothing and resampling
+SubcorticalProcessing.sh: END
+Thu Aug  9 13:24:37 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Generation of Dense Timeseries
+
+ START: CreateDenseTimeSeries
+ END: CreateDenseTimeSeries
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Completed
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Retino2
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Thu Aug  9 13:24:43 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino2/RibbonVolumeToSurfaceMapping
+
+ START: RibbonVolumeToSurfaceMapping
+0.480799
+0.978915
+.7385155
+1.2193145
+ END: RibbonVolumeToSurfaceMapping
+Thu Aug  9 13:29:12 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Surface Smoothing
+
+ START: SurfaceSmoothing
+ END: SurfaceSmoothing
+Thu Aug  9 13:29:19 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subcortical Processing
+SubcorticalProcessing.sh: START
+SubcorticalProcessing.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+SubcorticalProcessing.sh: ROIFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/ROIs
+SubcorticalProcessing.sh: FinalfMRIResolution: 2.4
+SubcorticalProcessing.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino2
+SubcorticalProcessing.sh: NameOffMRI: Task_Retino2
+SubcorticalProcessing.sh: SmoothingFWHM: 2.4
+SubcorticalProcessing.sh: BrainOrdinatesResolution: 2
+SubcorticalProcessing.sh: VolumefMRI: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino2/Task_Retino2
+SubcorticalProcessing.sh: Sigma: 1.01918616034562285127
+SubcorticalProcessing.sh: Creating subject-roi subcortical cifti at differing fMRI resolution
+SubcorticalProcessing.sh: Dilating out zeros
+SubcorticalProcessing.sh: Generate atlas subcortical template cifti
+SubcorticalProcessing.sh: Smoothing and resampling
+SubcorticalProcessing.sh: END
+Thu Aug  9 13:30:38 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Generation of Dense Timeseries
+
+ START: CreateDenseTimeSeries
+ END: CreateDenseTimeSeries
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Completed
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Retino3
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Thu Aug  9 13:30:44 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino3/RibbonVolumeToSurfaceMapping
+
+ START: RibbonVolumeToSurfaceMapping
+0.514793
+0.977104
+.7197075
+1.2345005
+ END: RibbonVolumeToSurfaceMapping
+Thu Aug  9 13:35:13 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Surface Smoothing
+
+ START: SurfaceSmoothing
+ END: SurfaceSmoothing
+Thu Aug  9 13:35:20 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subcortical Processing
+SubcorticalProcessing.sh: START
+SubcorticalProcessing.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+SubcorticalProcessing.sh: ROIFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/ROIs
+SubcorticalProcessing.sh: FinalfMRIResolution: 2.4
+SubcorticalProcessing.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino3
+SubcorticalProcessing.sh: NameOffMRI: Task_Retino3
+SubcorticalProcessing.sh: SmoothingFWHM: 2.4
+SubcorticalProcessing.sh: BrainOrdinatesResolution: 2
+SubcorticalProcessing.sh: VolumefMRI: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Retino3/Task_Retino3
+SubcorticalProcessing.sh: Sigma: 1.01918616034562285127
+SubcorticalProcessing.sh: Creating subject-roi subcortical cifti at differing fMRI resolution
+SubcorticalProcessing.sh: Dilating out zeros
+SubcorticalProcessing.sh: Generate atlas subcortical template cifti
+SubcorticalProcessing.sh: Smoothing and resampling
+SubcorticalProcessing.sh: END
+Thu Aug  9 13:36:34 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Generation of Dense Timeseries
+
+ START: CreateDenseTimeSeries
+ END: CreateDenseTimeSeries
+Thu Aug  9 13:36:40 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Completed
+Skipping mask creation
+Skipping run concatenation
+Skipping Timeseries Extraction

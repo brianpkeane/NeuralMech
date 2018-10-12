@@ -1,0 +1,110 @@
+#!/bin/bash
+
+# NM3 supercomputer (at Rutgers University-Newark) batch script
+# Taku Ito 
+# 
+#
+# This script runs a bash function on a large number of subjects (executing the HCP Preprocessing Pipeliens) using the supercomputer queuing system
+
+#modified by R Mill for CPRO2_learning preproc
+#adapted for Amarel
+#**NOTE: make sure you scp the data out of scratch/*output/ once you get the email saying the job is finished!
+
+#if re-running aborted subs from other servers make sure to scp: 
+#1) the raw input to /home/${usr_ID}/projects/CPRO2_learning/data/rawdata/mriqc_BIDS
+#2) the output from the pipelines to /scratch/${usr_ID}/CPRO2_learning_${subjNum}/output/${subjNum}/.
+
+
+##*** Modify these variables:
+#RM NOTE - only need this var for setting up paths; not necessary for running on lab partition
+usr_ID="keanebp"
+#Where step1/1a/1b and opts.shlib should be
+scriptDir="/home/${usr_ID}/projects/NeuralMech/docs/scripts/" # updated by bpk, 8/3/18
+#path to preproc script (Step1)
+preproc_script=${scriptDir}/Step1_hcp_preprocessing_msmall_amarel.sh
+#where batch scripts for each subject are written
+subjBatchScriptDir="${scriptDir}/subjbatch/"
+if [ ! -e $subjBatchScriptDir ]; then mkdir -p $subjBatchScriptDir; fi 
+jobNamePrefix="H"
+
+#input data must be transferred from HOME to SCRATCH before computing; FOR AMAREL resulting output must be transferred via scp to labserver directly from SCRATCH
+#RM NOTE - don't need this for lab partition (as input/output dirs should already be set up outside of this script)
+#work_input=/home/${usr_ID}/projects/CPRO2_learning/data/rawdata/mriqc_BIDS
+
+#work_output=/home/${usr_ID}/projects/CPRO2_learning/data/preprocessed/MRI
+#if [ ! -e $work_output ]; then mkdir -p $work_output; fi 
+
+#scratch dirs (and accompanying vars in Step1 script): scratch/rdm146/CPRO2_learning_${subjNum}/input (unprocesseddir); scratch/rdm146/CPRO2_learning_${subjNum}/output (datadir or subjdir)
+#RM NOTE - don't need this for lab partition exec
+#SCRATCH_rootdir=/scratch/${usr_ID}/
+#if [ ! -e $SCRATCH_rootdir ]; then mkdir -p $SCRATCH_rootdir; fi 
+
+listOfSubjects="sub-S31"
+# Completed subjects:
+#
+
+##Full list of subject numbers (keep full list of subject numbers commented-out for future reference):
+#sub-1 sub-2 sub-3 sub-6 sub-7 sub-8 sub-9 sub-10 sub-11 sub-13 sub-14 sub-16 sub-17    
+
+
+##Make and execute a batch script for each subject
+for subjNum in $listOfSubjects
+do
+
+ 	cd ${subjBatchScriptDir}
+ 	
+	batchFilename=${subjNum}_hcppreprocBatch.sh
+	
+	#RM - last two parms send email when script ends, important so that one can scp promptly
+	#modified from nm3: time (3-day limit, set to one day currently), partition (think only main is accessible for free?), cpus-per-task (was 20 on nm3;seems like most main nodes have max 28 cpus as shown by scontrol show node command )
+	echo "#!/bin/bash" > $batchFilename
+	echo "#SBATCH --time=14-00:00:00" >> $batchFilename
+	echo "#SBATCH --nodes=1" >> $batchFilename
+	echo "#SBATCH --ntasks=1" >> $batchFilename
+	echo "#SBATCH --partition=p_mc1689_1" >> $batchFilename # Changed as per Carrisa's instructions, bpk, 8/3/2018 
+	#echo "#SBATCH --partition=f_mc1689_1" >> $batchFilename
+	echo "#SBATCH --job-name=${jobNamePrefix}${subjNum}" >> $batchFilename
+	echo "#SBATCH --output=slurm.${jobNamePrefix}${subjNum}.out" >> $batchFilename
+	echo "#SBATCH --error=slurm.${jobNamePrefix}${subjNum}.err" >> $batchFilename
+	echo "#SBATCH --cpus-per-task=4" >> $batchFilename
+	echo "#SBATCH --mail-type=END" >> $batchFilename
+	echo "#SBATCH --mail-user=brian.keane@rutgers.edu" >> $batchFilename
+	
+	echo "#Run the MATLAB command" >> $batchFilename
+	echo "cd $scriptDir" >> $batchFilename
+	
+	#create subject scratch input and output dirs
+	#**RM note - don't need these commands when working with lab partition, as input and output dirs will already be set up outside of exec this script
+	#echo "mkdir -p ${SCRATCH_rootdir}/CPRO2_learning_${subjNum}/input/" >> $batchFilename
+	#echo "mkdir -p ${SCRATCH_rootdir}/CPRO2_learning_${subjNum}/output/" >> $batchFilename
+	
+	#transfer rawdata from work_input to subj scratch input
+	#creates input if this doesn't exist (helps when running modules that do not require raw input
+	#**RM note - again, don't need this for lab partition
+	#echo "if [ ! -e ${work_input}/${subjNum} ]; then mkdir -p ${work_input}/${subjNum}; fi " >> $batchFilename
+    #echo "cp -r ${work_input}/${subjNum}/. ${SCRATCH_rootdir}/CPRO2_learning_${subjNum}/input/" >> $batchFilename
+    
+    #*don't need this as running all modules at once now
+    #transfer any dirs from work_output to subj scratch output - *this makes it so that subset of preproc nodes can be run separately as below (albeit copying prior HCP preproc output could be quite slow)
+    #*only running modules in 2 steps for now because R needs to be installed
+    #echo "if [ ! -e ${work_output}/${subjNum} ]; then mkdir -p ${work_output}/${subjNum}; fi " >> $batchFilename
+	#echo "cp -r ${work_output}/${subjNum} ${SCRATCH_rootdir}/CPRO2_learning_${subjNum}/output/" >> $batchFilename
+	
+	#command to execute HCP preproc script - all modules!
+	#echo "${preproc_script} --server='amarel' --preFS='true' --FS='true' --postFS='true' --fmriVol='true' --fmriSurf='true' --restFix='true' --msmAll='true' --dedriftResample='true' --subj='${subjNum}'" >> $batchFilename
+	echo "${preproc_script} --server='amarel' --preFS='false' --FS='false' --postFS='false' --fmriVol='false' --fmriSurf='false' --restFix='true' --msmAll='false' --dedriftResample='false' --subj='${subjNum}'" >> $batchFilename # this is updated by bpk, 8/3/2018
+	#echo "${preproc_script} --server='amarel' --fmriVol_test='true' --fmriVol_test_run='5' --fmriSurf='true' --restFix='true' --msmAll='true' --dedriftResample='true' --subj='${subjNum}'" >> $batchFilename
+	#echo "${preproc_script} --server='amarel' --fmriVol='true' --fmriSurf='true' --restFix='true' --msmAll='true' --dedriftResample='true' --subj='${subjNum}'" >> $batchFilename
+
+	#Transfer output from scratch to work - **no work dir on amarel so skipping this
+    #echo "yes | cp -rf ${SCRATCH_rootdir}/CPRO2_learning_${subjNum}/output/ ${work_output}/${subjNum}" >> $batchFilename
+    
+    #*cannot delete scratch automatically, as with NM3, but can transfer from scratch directly
+    #Have to delete scratch after the job is finished - just delete the subject scratch folder here (rather than root, in case other subjects are being processed in parallel); hope NM3 is ok with the empty root scratch dir!
+    #echo "rm -rf ${SCRATCH_rootdir}/CPRO2_learning_${subjNum}" >> $batchFilename
+	
+	#Submit the job
+	sbatch $batchFilename
+	
+done
+	

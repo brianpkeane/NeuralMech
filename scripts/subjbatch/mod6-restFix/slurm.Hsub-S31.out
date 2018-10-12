@@ -1,0 +1,17 @@
+This script must be SOURCED to correctly setup the environment prior to running any of the other HCP scripts contained here
+Skipping fMRIVolumeProcessing_prac node
+Skipping fMRIVolumeProcessing_test node
+processing FMRI file Task_Rest with highpass 2000
+running highpass
+running MELODIC
+running FIX
+FIX Feature extraction for Melodic output directory: Task_Rest_hp2000.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+FIX Classifying components in Melodic directory: Task_Rest_hp2000.ica using training file: /projects/f_mc1689_1/HCP_v2_prereqs/fix1.065/training_files/HCP_hp2000.RData and threshold 10
+FIX Applying cleanup using cleanup file: Task_Rest_hp2000.ica/fix4melview_HCP_hp2000_thr10.txt and motion cleanup set to 1
+Skipping mask creation
+Skipping run concatenation
+Skipping Timeseries Extraction

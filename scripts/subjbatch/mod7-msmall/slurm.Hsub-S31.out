@@ -1,0 +1,90 @@
+This script must be SOURCED to correctly setup the environment prior to running any of the other HCP scripts contained here
+Skipping fMRIVolumeProcessing_prac node
+Skipping fMRIVolumeProcessing_test node
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: MSMCONFIGDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/MSMConfig
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Showing HCP Pipelines version
+release/v3.25.1
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Using named parameters
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Study Folder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Subject: sub-S31
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: fMRI Names: Task_Rest
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Output fMRI Name: Task_Rest_All
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: ICA+FIX HighPass setting: 2000
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: fMRI Proc string: _Atlas_hp2000_clean
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: MSM All Templates: /global/templates/MSMAll
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Output Registration Name: MSMAll_InitalReg
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: High Resolution Mesh: 164
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Low Resolution Mesh: 32
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Input Registration Name: MSMSulc
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: MATLAB run mode: 1 - Use interpreted MATLAB
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Starting main functionality
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Subject: sub-S31
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: fMRINames: Task_Rest
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: OutputfMRIName: Task_Rest_All
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: HighPass: 2000
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: fMRIProcSTRING: _Atlas_hp2000_clean
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: MSMAllTemplates: /global/templates/MSMAll
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: OutputRegName: MSMAll_InitalReg
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: HighResMesh: 164
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: LowResMesh: 32
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: InputRegName: MSMSulc
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: MatlabRunMode: 1
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: InPCARegName: MSMSulc
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Running MSM on full timeseries
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: output_proc_string: _vn
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: Demean: YES
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: VarianceNormalization: YES
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: ComputeVarianceNormalization: YES
+Thu Aug  9 17:31:18 EDT 2018 - MSMAllPipeline.sh: RevertBiasField: NO
+Thu Aug  9 17:31:18 EDT 2018 - SingleSubjectConcat.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Thu Aug  9 17:31:18 EDT 2018 - SingleSubjectConcat.sh: CARET7DIR: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64
+Thu Aug  9 17:31:18 EDT 2018 - SingleSubjectConcat.sh: Showing wb_command version
+Connectome Workbench
+Type: Command Line Application
+Version: 1.2.3
+Qt Compiled Version: 5.7.0
+Qt Runtime Version: 5.7.0
+Commit: 49e06730cae969b92c131b0b25498c0d2643b088
+Commit Date: 2017-11-01 15:23:47 -0500
+Compiled with OpenMP: YES
+Compiler: g++ (/act/gcc-4.7.2/bin)
+Compiler Version: 4.7.2
+Compiled Debug: NO
+Operating System: Linux
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Using named parameters
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Study Folder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Subject ID: sub-S31
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: fMRI name list: Task_Rest
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: ICA+FIX highpass setting: 2000
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Output fMRI Name: Task_Rest_All
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: fMRI Proc String: _Atlas_hp2000_clean
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Output Proc String: _vn
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Demean: YES
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Variance Normalization: YES
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Compute Variance Normalization: YES
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Revert Bias Field: NO
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: MATLAB run mode: 1
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Subject: sub-S31
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: fMRINames: Task_Rest
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: HighPass: 2000
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: OutputfMRIName: Task_Rest_All
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: fMRIProcSTRING: _Atlas_hp2000_clean
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: OutputProcSTRING: _vn
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Demean: YES
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: VarianceNormalization: YES
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: ComputeVarianceNormalization: YES
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: RevertBiasField: NO
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: MatlabRunMode: 1
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: fMRINames: Task_Rest
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: OutputProcSTRING: _vn
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: AtlasFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: OutputFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest_All
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: Caret7_Command: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64/wb_command
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: fMRIName: Task_Rest
+Thu Aug  9 17:31:20 EDT 2018 - SingleSubjectConcat.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest
+Skipping mask creation
+Skipping run concatenation
+Skipping Timeseries Extraction

@@ -1,0 +1,6 @@
+
+While running:
+/home/projects/f_mc1689_1/HCP_v2_prereqs/workbench/bin_rh_linux64/../exe_rh_linux64/wb_command -cifti-reduce /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean.dtseries.nii MEAN /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean_mean.dscalar.nii
+
+ERROR: failed to open file '/scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/Task_Rest_Atlas_hp2000_clean.dtseries.nii', file does not exist, or folder permissions prevent seeing it
+

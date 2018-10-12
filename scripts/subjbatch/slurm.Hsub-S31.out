@@ -1,0 +1,620 @@
+This script must be SOURCED to correctly setup the environment prior to running any of the other HCP scripts contained here
+This script must be SOURCED to correctly setup the environment prior to running any of the other HCP scripts contained here
+/projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/PreFreeSurfer/PreFreeSurferPipeline.sh
+/projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/PreFreeSurfer/PreFreeSurferPipeline.sh
+Fri Oct 12 03:08:24 EDT 2018 - PreFreeSurferPipeline.sh: Platform Information Follows: 
+Fri Oct 12 03:08:24 EDT 2018 - PreFreeSurferPipeline.sh: Platform Information Follows: 
+Linux hal0092 3.10.0-862.14.4.el7.x86_64 #1 SMP Wed Sep 26 15:12:11 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+Linux hal0123 3.10.0-862.14.4.el7.x86_64 #1 SMP Wed Sep 26 15:12:11 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+Fri Oct 12 03:08:24 EDT 2018 - PreFreeSurferPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:24 EDT 2018 - PreFreeSurferPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: Finished Parsing Command Line Options
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T1wInputImages: /scratch/keanebp/NeuralMech_sub-S31/input//anat/sub-S31_rec-2_T1w.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T2wInputImages: /scratch/keanebp/NeuralMech_sub-S31/input//anat/sub-S31_rec-2_T2w.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T1wTemplate: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_0.8mm.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T1wTemplateBrain: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_0.8mm_brain.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T1wTemplate2mm: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_2mm.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T2wTemplate: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T2_0.8mm.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T2wTemplateBrain: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T2_0.8mm_brain.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T2wTemplate2mm: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T2_2mm.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: TemplateMask: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_0.8mm_brain_mask.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: Template2mmMask: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_2mm_brain_mask_dil.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: BrainSize: 150
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: FNIRTConfig: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/T1_2_MNI152_2mm.cnf
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: MagnitudeInputName: NONE
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: PhaseInputName: 
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: GEB0InputName: 
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: TE: 
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: SpinEchoPhaseEncodeNegative: /scratch/keanebp/NeuralMech_sub-S31/input//fmap/sub-S31_dir-AP_run-1_epi.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: SpinEchoPhaseEncodePositive: /scratch/keanebp/NeuralMech_sub-S31/input//fmap/sub-S31_dir-PA_run-1_epi.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: DwellTime: 0.00075
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: SEUnwarpDir: y
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T1wSampleSpacing: 0.0000074
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T2wSampleSpacing: 0.0000021
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: UnwarpDir: z
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: GradientDistortionCoeffs: 
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: AvgrdcSTRING: TOPUP
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: TopupConfig: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/b02b0.cnf
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: BiasFieldSmoothingSigma: 
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: UseJacobian: true
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: FSLDIR: /projects/f_mc1689_1//HCP_v2_prereqs/fsl
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: HCPPIPEDIR_Global: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/scripts
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: HCPPIPEDIR_PreFS: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/PreFreeSurfer/scripts
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T1wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: T2wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T2w
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/xfms/
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: Finished Parsing Command Line Options
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: SubjectID: sub-S31
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: SubjectDIR: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: T1wImage: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/T1w_acpc_dc_restore.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: T1wImageBrain: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/T1w_acpc_dc_restore_brain.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: T2wImage: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/T2w_acpc_dc_restore.nii.gz
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: recon_all_seed: 
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: seed_cmd_appendix: 
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: HCPPIPEDIR_FS: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/FreeSurfer/scripts
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: which flirt: /projects/f_mc1689_1/HCP_v2_prereqs/fsl/bin/flirt
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: flirt -version: FLIRT version 6.0
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: which applywarp: /projects/f_mc1689_1/HCP_v2_prereqs/fsl/bin/applywarp
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: which fslstats: /projects/f_mc1689_1/HCP_v2_prereqs/fsl/bin/fslstats
+Fri Oct 12 03:08:26 EDT 2018 - FreeSurferPipeline.sh: which fslmaths: /projects/f_mc1689_1/HCP_v2_prereqs/fsl/bin/fslmaths
+Fri Oct 12 03:08:26 EDT 2018 - PreFreeSurferPipeline.sh: Finished Parsing Command Line Options
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T1wInputImages: /scratch/keanebp/NeuralMech_sub-S31/input//anat/sub-S31_rec-2_T1w.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T2wInputImages: /scratch/keanebp/NeuralMech_sub-S31/input//anat/sub-S31_rec-2_T2w.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T1wTemplate: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_0.8mm.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T1wTemplateBrain: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_0.8mm_brain.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T1wTemplate2mm: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_2mm.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T2wTemplate: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T2_0.8mm.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T2wTemplateBrain: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T2_0.8mm_brain.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T2wTemplate2mm: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T2_2mm.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: TemplateMask: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_0.8mm_brain_mask.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: Template2mmMask: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MNI152_T1_2mm_brain_mask_dil.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: BrainSize: 150
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: FNIRTConfig: /projects/f_mc1689_1/HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/T1_2_MNI152_2mm.cnf
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which recon-all: /projects/f_mc1689_1/HCP_v2_prereqs/freesurfer/bin/recon-all
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: MagnitudeInputName: NONE
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: recon-all --version: $Id: recon-all,v 1.379.2.73 2013/05/12 23:15:37 nicks Exp $
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: PhaseInputName: 
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: GEB0InputName: 
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: TE: 
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: SpinEchoPhaseEncodeNegative: /scratch/keanebp/NeuralMech_sub-S31/input//fmap/sub-S31_dir-AP_run-1_epi.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which mri_convert: /projects/f_mc1689_1/HCP_v2_prereqs/freesurfer/bin/mri_convert
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: SpinEchoPhaseEncodePositive: /scratch/keanebp/NeuralMech_sub-S31/input//fmap/sub-S31_dir-PA_run-1_epi.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: DwellTime: 0.00075
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: SEUnwarpDir: y
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T1wSampleSpacing: 0.0000074
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T2wSampleSpacing: 0.0000021
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: UnwarpDir: z
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: GradientDistortionCoeffs: 
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: AvgrdcSTRING: TOPUP
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: TopupConfig: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/b02b0.cnf
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: BiasFieldSmoothingSigma: 
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: UseJacobian: true
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: FSLDIR: /projects/f_mc1689_1//HCP_v2_prereqs/fsl
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: HCPPIPEDIR_Global: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/scripts
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: HCPPIPEDIR_PreFS: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/PreFreeSurfer/scripts
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T1wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: T2wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T2w
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Fri Oct 12 03:08:27 EDT 2018 - PreFreeSurferPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/xfms/
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which mri_em_register: /projects/f_mc1689_1/HCP_v2_prereqs/freesurfer/bin/mri_em_register
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: Finished Parsing Command Line Options
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: mri_em_register --version: 
+
+ ======= NUMBER OF OPENMP THREADS = 3 ======= 
+stable5
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: SubjectID: sub-S31
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: SubjectDIR: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: T1wImage: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/T1w_acpc_dc_restore.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: T1wImageBrain: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/T1w_acpc_dc_restore_brain.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: T2wImage: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/T2w_acpc_dc_restore.nii.gz
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: recon_all_seed: 
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: seed_cmd_appendix: 
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: HCPPIPEDIR_FS: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/FreeSurfer/scripts
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which flirt: /projects/f_mc1689_1/HCP_v2_prereqs/fsl/bin/flirt
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: flirt -version: FLIRT version 6.0
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which applywarp: /projects/f_mc1689_1/HCP_v2_prereqs/fsl/bin/applywarp
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which fslstats: /projects/f_mc1689_1/HCP_v2_prereqs/fsl/bin/fslstats
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which fslmaths: /projects/f_mc1689_1/HCP_v2_prereqs/fsl/bin/fslmaths
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which recon-all: /projects/f_mc1689_1/HCP_v2_prereqs/freesurfer/bin/recon-all
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: recon-all --version: $Id: recon-all,v 1.379.2.73 2013/05/12 23:15:37 nicks Exp $
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which mri_convert: /projects/f_mc1689_1/HCP_v2_prereqs/freesurfer/bin/mri_convert
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which mri_em_register: /projects/f_mc1689_1/HCP_v2_prereqs/freesurfer/bin/mri_em_register
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which mri_watershed: /projects/f_mc1689_1/HCP_v2_prereqs/freesurfer/bin/mri_watershed
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: mri_em_register --version: 
+
+ ======= NUMBER OF OPENMP THREADS = 3 ======= 
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: mri_watershed --version: stable5
+stable5
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: which mri_watershed: /projects/f_mc1689_1/HCP_v2_prereqs/freesurfer/bin/mri_watershed
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: mri_watershed --version: stable5
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: Make Spline Interpolated Downsample to 1mm
+Fri Oct 12 03:08:27 EDT 2018 - FreeSurferPipeline.sh: Make Spline Interpolated Downsample to 1mm
+Fri Oct 12 03:08:27 EDT 2018 - PostFreeSurferPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:27 EDT 2018 - PostFreeSurferPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:28 EDT 2018 - PostFreeSurferPipeline.sh: RegName: MSMSulc
+Fri Oct 12 03:08:28 EDT 2018 - PostFreeSurferPipeline.sh: Conversion of FreeSurfer Volumes and Surfaces to NIFTI and GIFTI and Create Caret Files and Registration
+Fri Oct 12 03:08:28 EDT 2018 - PostFreeSurferPipeline.sh: RegName: MSMSulc
+Fri Oct 12 03:08:28 EDT 2018 - PostFreeSurferPipeline.sh: RegName: MSMSulc
+Fri Oct 12 03:08:28 EDT 2018 - PostFreeSurferPipeline.sh: Conversion of FreeSurfer Volumes and Surfaces to NIFTI and GIFTI and Create Caret Files and Registration
+Fri Oct 12 03:08:28 EDT 2018 - PostFreeSurferPipeline.sh: RegName: MSMSulc
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: MSMBINDIR: /projects/f_mc1689_1//HCP_v2_prereqs/MSMbinaries/ecr05/MSM_HOCR_v2/Centos/
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: MSMCONFIGDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/MSMConfig
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: MSMBINDIR: /projects/f_mc1689_1//HCP_v2_prereqs/MSMbinaries/ecr05/MSM_HOCR_v2/Centos/
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: CARET7DIR: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: MSMCONFIGDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/MSMConfig
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: CARET7DIR: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: START
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: START
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: Subject: sub-S31
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: Subject: sub-S31
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: T1wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: T1wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: AtlasSpaceFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: NativeFolder: Native
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: FreeSurferFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/sub-S31
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: NativeFolder: Native
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: FreeSurferInput: T1w_acpc_dc_restore_1mm
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: T1wImage: T1w_acpc_dc_restore
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: FreeSurferFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/sub-S31
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: T2wImage: T2w_acpc_dc_restore
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: FreeSurferInput: T1w_acpc_dc_restore_1mm
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: SurfaceAtlasDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/standard_mesh_atlases
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: T1wImage: T1w_acpc_dc_restore
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: HighResMesh: 164
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: T2wImage: T2w_acpc_dc_restore
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: LowResMeshes: 32
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: AtlasTransform: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/xfms/acpc_dc2standard
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: SurfaceAtlasDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/standard_mesh_atlases
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: InverseAtlasTransform: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/xfms/standard2acpc_dc
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: AtlasSpaceT1wImage: T1w_restore
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: HighResMesh: 164
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: AtlasSpaceT2wImage: T2w_restore
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: LowResMeshes: 32
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: T1wImageBrainMask: brainmask_fs
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: AtlasTransform: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/xfms/acpc_dc2standard
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: FreeSurferLabels: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/FreeSurferAllLut.txt
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: GrayordinatesSpaceDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/91282_Greyordinates
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: InverseAtlasTransform: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/xfms/standard2acpc_dc
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: GrayordinatesResolutions: 2
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: SubcorticalGrayLabels: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/FreeSurferSubcorticalLabelTableLut.txt
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: AtlasSpaceT1wImage: T1w_restore
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: RegName: MSMSulc
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: AtlasSpaceT2wImage: T2w_restore
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: InflateExtraScale: 1
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: T1wImageBrainMask: brainmask_fs
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: LowResMeshes: 32
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: GrayordinatesResolutions: 2
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: FreeSurferLabels: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/FreeSurferAllLut.txt
+Running fMRI Volume processing on Rest scan
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: GrayordinatesSpaceDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/91282_Greyordinates
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: GrayordinatesResolutions: 2
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: SubcorticalGrayLabels: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/FreeSurferSubcorticalLabelTableLut.txt
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: RegName: MSMSulc
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: InflateExtraScale: 1
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: LowResMeshes: 32
+Fri Oct 12 03:08:28 EDT 2018 - FreeSurfer2CaretConvertAndRegisterNonlinear.sh: GrayordinatesResolutions: 2
+Running fMRI Volume processing on Rest scan
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: NameOffMRI: Task_Rest
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: NameOffMRI: Task_Rest
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: fMRITimeSeries: /scratch/keanebp/NeuralMech_sub-S31/input//func/sub-S31_task-rest_run-1_bold.nii.gz
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: fMRITimeSeries: /scratch/keanebp/NeuralMech_sub-S31/input//func/sub-S31_task-rest_run-1_bold.nii.gz
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: fMRIScout: /scratch/keanebp/NeuralMech_sub-S31/input//func/sub-S31_task-rest_run-1_sbref.nii.gz
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: fMRIScout: /scratch/keanebp/NeuralMech_sub-S31/input//func/sub-S31_task-rest_run-1_sbref.nii.gz
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: SpinEchoPhaseEncodeNegative: /scratch/keanebp/NeuralMech_sub-S31/input//fmap/sub-S31_dir-AP_run-2_epi.nii.gz
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: SpinEchoPhaseEncodeNegative: /scratch/keanebp/NeuralMech_sub-S31/input//fmap/sub-S31_dir-AP_run-2_epi.nii.gz
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: SpinEchoPhaseEncodePositive: /scratch/keanebp/NeuralMech_sub-S31/input//fmap/sub-S31_dir-PA_run-2_epi.nii.gz
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: SpinEchoPhaseEncodePositive: /scratch/keanebp/NeuralMech_sub-S31/input//fmap/sub-S31_dir-PA_run-2_epi.nii.gz
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: MagnitudeInputName: NONE
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: MagnitudeInputName: NONE
+Fri Oct 12 03:08:28 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: PhaseInputName: NONE
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: PhaseInputName: NONE
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: GEB0InputName: 
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: GEB0InputName: 
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: DwellTime: 0.00075
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: deltaTE: NONE
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: DwellTime: 0.00075
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: UnwarpDir: -y
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: deltaTE: NONE
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: UnwarpDir: -y
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: DistortionCorrection: TOPUP
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: BiasCorrection: SEBASED
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: GradientDistortionCoeffs: NONE
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: DistortionCorrection: TOPUP
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: TopupConfig: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/b02b0.cnf
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: dof: 6
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: BiasCorrection: SEBASED
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: RUN: 
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: GradientDistortionCoeffs: NONE
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: UseJacobian: 
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: JacobianDefault: true
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: After taking default value if necessary, UseJacobian: true
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: TopupConfig: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/config/b02b0.cnf
+Viscomp task runs for sub-S31 are 0
+Retino task runs for sub-S31 are 0
+Skipping fMRIVolumeProcessing_prac node
+Skipping fMRIVolumeProcessing_test node
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:29 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: dof: 6
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: RUN: 
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Rest
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/RibbonVolumeToSurfaceMapping
+Viscomp Task runs for sub-S31 are 0
+Retino Task runs for sub-S31 are 0
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: UseJacobian: 
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: JacobianDefault: true
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRIVolumeProcessingPipeline.sh: After taking default value if necessary, UseJacobian: true
+Viscomp task runs for sub-S31 are 0
+Retino task runs for sub-S31 are 0
+Skipping fMRIVolumeProcessing_prac node
+Skipping fMRIVolumeProcessing_test node
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Parsing Command Line Options
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Path: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: NameOffMRI: Task_Rest
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: LowResMesh: 32
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: FinalfMRIResolution: 2.4
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: SmoothingFWHM: 2.4
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: GrayordinatesResolution: 2
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RegName: MSMSulc
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: RUN: 
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: Make fMRI Ribbon
+Fri Oct 12 03:08:30 EDT 2018 - GenericfMRISurfaceProcessingPipeline.sh: mkdir -p /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest/RibbonVolumeToSurfaceMapping
+Viscomp Task runs for sub-S31 are 0
+Retino Task runs for sub-S31 are 0
+No valid 4D_FMRI input file specified
+No valid 4D_FMRI input file specified
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MSMCONFIGDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/MSMConfig
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MSMCONFIGDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/MSMConfig
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Showing HCP Pipelines version
+release/v3.25.1
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Showing HCP Pipelines version
+release/v3.25.1
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Using named parameters
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Using named parameters
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Study Folder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Study Folder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: fMRI Names: Task_Rest
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: fMRI Names: Task_Rest
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Output fMRI Name: Task_Rest_All
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Output fMRI Name: Task_Rest_All
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: ICA+FIX HighPass setting: 2000
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: ICA+FIX HighPass setting: 2000
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: fMRI Proc string: _Atlas_hp2000_clean
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: fMRI Proc string: _Atlas_hp2000_clean
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MSM All Templates: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MSMAll
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MSM All Templates: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MSMAll
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Output Registration Name: MSMAll_InitalReg
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Output Registration Name: MSMAll_InitalReg
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: High Resolution Mesh: 164
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: High Resolution Mesh: 164
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Low Resolution Mesh: 32
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Low Resolution Mesh: 32
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Input Registration Name: MSMSulc
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Input Registration Name: MSMSulc
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MATLAB run mode: 1 - Use interpreted MATLAB
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MATLAB run mode: 1 - Use interpreted MATLAB
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Starting main functionality
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Starting main functionality
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: fMRINames: Task_Rest
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: OutputfMRIName: Task_Rest_All
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: fMRINames: Task_Rest
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: HighPass: 2000
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: fMRIProcSTRING: _Atlas_hp2000_clean
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: OutputfMRIName: Task_Rest_All
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MSMAllTemplates: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MSMAll
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: HighPass: 2000
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: OutputRegName: MSMAll_InitalReg
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: HighResMesh: 164
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: fMRIProcSTRING: _Atlas_hp2000_clean
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: LowResMesh: 32
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MSMAllTemplates: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1/global/templates/MSMAll
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: InputRegName: MSMSulc
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: OutputRegName: MSMAll_InitalReg
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MatlabRunMode: 1
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: HighResMesh: 164
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: InPCARegName: MSMSulc
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: LowResMesh: 32
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Running MSM on full timeseries
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: InputRegName: MSMSulc
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: output_proc_string: _vn
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: MatlabRunMode: 1
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Demean: YES
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: VarianceNormalization: YES
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: InPCARegName: MSMSulc
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: ComputeVarianceNormalization: YES
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Running MSM on full timeseries
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: RevertBiasField: NO
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: output_proc_string: _vn
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: Demean: YES
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: VarianceNormalization: YES
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: ComputeVarianceNormalization: YES
+Fri Oct 12 03:08:31 EDT 2018 - SingleSubjectConcat.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:31 EDT 2018 - MSMAllPipeline.sh: RevertBiasField: NO
+Fri Oct 12 03:08:31 EDT 2018 - SingleSubjectConcat.sh: CARET7DIR: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64
+Fri Oct 12 03:08:31 EDT 2018 - SingleSubjectConcat.sh: Showing wb_command version
+Fri Oct 12 03:08:31 EDT 2018 - SingleSubjectConcat.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:31 EDT 2018 - SingleSubjectConcat.sh: CARET7DIR: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64
+Fri Oct 12 03:08:31 EDT 2018 - SingleSubjectConcat.sh: Showing wb_command version
+Connectome Workbench
+Type: Command Line Application
+Version: 1.2.3
+Qt Compiled Version: 5.7.0
+Qt Runtime Version: 5.7.0
+Commit: 49e06730cae969b92c131b0b25498c0d2643b088
+Commit Date: 2017-11-01 15:23:47 -0500
+Compiled with OpenMP: YES
+Compiler: g++ (/act/gcc-4.7.2/bin)
+Compiler Version: 4.7.2
+Compiled Debug: NO
+Operating System: Linux
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: Using named parameters
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: Study Folder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: Subject ID: sub-S31
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: fMRI name list: Task_Rest
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: ICA+FIX highpass setting: 2000
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: Output fMRI Name: Task_Rest_All
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: fMRI Proc String: _Atlas_hp2000_clean
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: Output Proc String: _vn
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: Demean: YES
+Fri Oct 12 03:08:32 EDT 2018 - SingleSubjectConcat.sh: Variance Normalization: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Compute Variance Normalization: YES
+Connectome Workbench
+Type: Command Line Application
+Version: 1.2.3
+Qt Compiled Version: 5.7.0
+Qt Runtime Version: 5.7.0
+Commit: 49e06730cae969b92c131b0b25498c0d2643b088
+Commit Date: 2017-11-01 15:23:47 -0500
+Compiled with OpenMP: YES
+Compiler: g++ (/act/gcc-4.7.2/bin)
+Compiler Version: 4.7.2
+Compiled Debug: NO
+Operating System: Linux
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Revert Bias Field: NO
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: MATLAB run mode: 1
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Using named parameters
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Subject: sub-S31
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Study Folder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRINames: Task_Rest
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Subject ID: sub-S31
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: HighPass: 2000
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRI name list: Task_Rest
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: OutputfMRIName: Task_Rest_All
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRIProcSTRING: _Atlas_hp2000_clean
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: ICA+FIX highpass setting: 2000
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: OutputProcSTRING: _vn
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Output fMRI Name: Task_Rest_All
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Demean: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRI Proc String: _Atlas_hp2000_clean
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: VarianceNormalization: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Output Proc String: _vn
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: ComputeVarianceNormalization: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Demean: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: RevertBiasField: NO
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: MatlabRunMode: 1
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Variance Normalization: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRINames: Task_Rest
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Compute Variance Normalization: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: OutputProcSTRING: _vn
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Revert Bias Field: NO
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: AtlasFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: MATLAB run mode: 1
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: OutputFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest_All
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Caret7_Command: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64/wb_command
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Subject: sub-S31
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRIName: Task_Rest
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRINames: Task_Rest
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: HighPass: 2000
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: OutputfMRIName: Task_Rest_All
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRIProcSTRING: _Atlas_hp2000_clean
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: OutputProcSTRING: _vn
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Demean: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: VarianceNormalization: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: ComputeVarianceNormalization: YES
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: RevertBiasField: NO
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: MatlabRunMode: 1
+ Task runs for sub-S31 are 0
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRINames: Task_Rest
+Test Task runs for sub-S31 are 0
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: OutputProcSTRING: _vn
+tfMRINames for this subject are Task_Rest@Task_Viscomp1@Task_Retino1
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: AtlasFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: OutputFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest_All
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: Caret7_Command: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64/wb_command
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: fMRIName: Task_Rest
+Fri Oct 12 03:08:33 EDT 2018 - SingleSubjectConcat.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results/Task_Rest
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: CARET7DIR: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Showing HCP Pipelines version
+release/v3.25.1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Showing Connectome Workbench (wb_command) version
+Connectome Workbench
+Type: Command Line Application
+Version: 1.2.3
+Qt Compiled Version: 5.7.0
+Qt Runtime Version: 5.7.0
+Commit: 49e06730cae969b92c131b0b25498c0d2643b088
+Commit Date: 2017-11-01 15:23:47 -0500
+Compiled with OpenMP: YES
+Compiler: g++ (/act/gcc-4.7.2/bin)
+Compiler Version: 4.7.2
+Compiled Debug: NO
+Operating System: Linux
+ Task runs for sub-S31 are 0
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Using named parameters
+Test Task runs for sub-S31 are 0
+tfMRINames for this subject are Task_Rest@Task_Viscomp1@Task_Retino1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Study Folder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: High Resolution Mesh: 164
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Low Resolution Meshes: 32
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: HCPPIPEDIR: /projects/f_mc1689_1//HCP_v2_prereqs/HCP_Pipelines_v3_25_1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Registration Name: MSMAll_InitalReg_2_d40_WRN
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: CARET7DIR: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: De-Drifting registration files: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Showing HCP Pipelines version
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: concatenated registration name: MSMAll_InitalReg_2_d40_WRN
+release/v3.25.1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: list of structural maps to be resampled: sulc@curvature@corrThickness@thickness
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Showing Connectome Workbench (wb_command) version
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: list of Myelin maps to be resampled: MyelinMap@SmoothedMyelinMap
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: list of resting state scans: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: list of task scans: Task_Rest@Task_Viscomp1@Task_Retino1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: smoothing value: 2.4
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: highpass value: 2000
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Myelin Target File: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Input Registration Name: NONE
+Connectome Workbench
+Type: Command Line Application
+Version: 1.2.3
+Qt Compiled Version: 5.7.0
+Qt Runtime Version: 5.7.0
+Commit: 49e06730cae969b92c131b0b25498c0d2643b088
+Commit Date: 2017-11-01 15:23:47 -0500
+Compiled with OpenMP: YES
+Compiler: g++ (/act/gcc-4.7.2/bin)
+Compiler Version: 4.7.2
+Compiled Debug: NO
+Operating System: Linux
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: MATLAB Run Mode: 1 - Use interpreted MATLAB
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Starting main functionality
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Using named parameters
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Study Folder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: HighResMesh: 164
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: LowResMeshes: 32
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: High Resolution Mesh: 164
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: RegName: MSMAll_InitalReg_2_d40_WRN
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Low Resolution Meshes: 32
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: DeDriftRegFiles: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Registration Name: MSMAll_InitalReg_2_d40_WRN
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: ConcatRegName: MSMAll_InitalReg_2_d40_WRN
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: De-Drifting registration files: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Maps: sulc@curvature@corrThickness@thickness
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: MyelinMaps: MyelinMap@SmoothedMyelinMap
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: concatenated registration name: MSMAll_InitalReg_2_d40_WRN
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: rfMRINames: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: tfMRINames: Task_Rest@Task_Viscomp1@Task_Retino1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: list of structural maps to be resampled: sulc@curvature@corrThickness@thickness
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: SmoothingFWHM: 2.4
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: list of Myelin maps to be resampled: MyelinMap@SmoothedMyelinMap
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: HighPass: 2000
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: MyelinTargetFile: 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: list of resting state scans: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: InRegName: 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: list of task scans: Task_Rest@Task_Viscomp1@Task_Retino1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: MatlabRunMode: 1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: smoothing value: 2.4
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Caret7_Command: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64/wb_command
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: highpass value: 2000
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, LowResMeshes: 32
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Myelin Target File: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Input Registration Name: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: MATLAB Run Mode: 1 - Use interpreted MATLAB
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, DeDriftRegFiles: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Starting main functionality
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, Maps: sulc curvature corrThickness thickness
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: StudyFolder: /scratch/keanebp/NeuralMech_sub-S31/output/
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Subject: sub-S31
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, MyelinMaps: MyelinMap SmoothedMyelinMap
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: HighResMesh: 164
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: LowResMeshes: 32
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, rfMRINames: 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: RegName: MSMAll_InitalReg_2_d40_WRN
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, tfMRINames: Task_Rest Task_Viscomp1 Task_Retino1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: DeDriftRegFiles: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: CorrectionSigma: 14.14213562373095048801
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: ConcatRegName: MSMAll_InitalReg_2_d40_WRN
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: AtlasFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Maps: sulc@curvature@corrThickness@thickness
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: T1wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: NativeFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Native
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: MyelinMaps: MyelinMap@SmoothedMyelinMap
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: NativeT1wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/Native
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: rfMRINames: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: DownSampleFolderNames: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/fsaverage_LR32k 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: tfMRINames: Task_Rest@Task_Viscomp1@Task_Retino1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: DownSampleT1wFolderNames: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/fsaverage_LR32k 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: SmoothingFWHM: 2.4
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Concat Reg
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: HighPass: 2000
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Hemisphere: L
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: MyelinTargetFile: 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Structure: CORTEX_LEFT
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: InRegName: 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: DeDriftRegFile: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: MatlabRunMode: 1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Make MSM Registration Areal Distortion Maps
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Caret7_Command: /projects/f_mc1689_1//HCP_v2_prereqs/workbench/bin_rh_linux64/wb_command
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, LowResMeshes: 32
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, DeDriftRegFiles: NONE
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, Maps: sulc curvature corrThickness thickness
+Skipping mask creation
+Skipping run concatenation
+Skipping Timeseries Extraction
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, MyelinMaps: MyelinMap SmoothedMyelinMap
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, rfMRINames: 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: After delimiter substitution, tfMRINames: Task_Rest Task_Viscomp1 Task_Retino1
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: CorrectionSigma: 14.14213562373095048801
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: AtlasFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: T1wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: NativeFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Native
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: NativeT1wFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/Native
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: ResultsFolder: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/Results
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: DownSampleFolderNames: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/MNINonLinear/fsaverage_LR32k 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: DownSampleT1wFolderNames: /scratch/keanebp/NeuralMech_sub-S31/output//sub-S31/T1w/fsaverage_LR32k 
+Fri Oct 12 03:08:33 EDT 2018 - DeDriftAndResamplePipeline.sh: Concat Reg
+Fri Oct 12 03:08:34 EDT 2018 - DeDriftAndResamplePipeline.sh: Hemisphere: L
+Fri Oct 12 03:08:34 EDT 2018 - DeDriftAndResamplePipeline.sh: Structure: CORTEX_LEFT
+Fri Oct 12 03:08:34 EDT 2018 - DeDriftAndResamplePipeline.sh: DeDriftRegFile: NONE
+Fri Oct 12 03:08:34 EDT 2018 - DeDriftAndResamplePipeline.sh: Make MSM Registration Areal Distortion Maps
+Skipping mask creation
+Skipping run concatenation
+Skipping Timeseries Extraction
