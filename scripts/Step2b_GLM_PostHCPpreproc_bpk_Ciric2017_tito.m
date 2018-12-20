@@ -441,11 +441,16 @@ if execute==1
                     disp('Running rest nuisance regression')
 
                     %Specify the number of nuisance regressors
-                    NUMREGRESSORS_NUISANCE=16;%2 white matter (1 normal + 1 deriv, computed in GLM function below), 2 ventricles (1 normal + 1 deriv, computed in GLM), 12 motion
+                    %NUMREGRESSORS_NUISANCE=16;%2 white matter (1 normal + 1 deriv, computed in GLM function below), 2 ventricles (1 normal + 1 deriv, computed in GLM), 12 motion
+                    %% TAKU EDIT - Ciric model additions for 36p model (without GSR it's 32; with GSR it's 36 (4 additional regressors for GSR)
+                    % 4 white matter (1 normal + 1 derivative, 1 quadratic + 1 derivatives, computed in GLM function below)
+                    % 4 ventricles (1 normal + 1 derivative, 1 quadratic + 1 derivative, computed in GLM)
+                    % 24 motion (6 normal + 6 derivatives, 6 quadratic + 6 derivatives
+                    NUMREGRESSORS_NUISANCE=32;
 
-                    %Add 2 regressors for GSR
+                    %Add 4 regressors for GSR: 1 normal + 1 derivative, 1 quadratic + 1 derivative
                     if GSR
-                        NUMREGRESSORS_NUISANCE=NUMREGRESSORS_NUISANCE+2;
+                        NUMREGRESSORS_NUISANCE=NUMREGRESSORS_NUISANCE+4;
                     end
                     visualizeDesignMatrix=1;
                     restGLMVars = runGLM(tseriesMatSubj, NUMREGRESSORS_NUISANCE, nuisanceTSVarsRest, [], func_info.RUNLENGTHS, func_info.RESTRUNS, NPROC, NUMPARCELS, GSR, visualizeDesignMatrix);
@@ -477,14 +482,14 @@ if execute==1
                     disp('Running task nuisance regression and GLM')
 
                     % Specify the number of nuisance regressors
-                   NUMREGRESSORS_NUISANCE=16;
+                   NUMREGRESSORS_NUISANCE=32;
                    if modeli>=5
-                        NUMREGRESSORS_NUISANCE=NUMREGRESSORS_NUISANCE-12 %removing 12 motion regressors
+                        NUMREGRESSORS_NUISANCE=NUMREGRESSORS_NUISANCE-24 %removing 24 motion regressors
                     end
 
                     % Add 2 regressors for GSR
                     if GSR
-                        NUMREGRESSORS_NUISANCE=NUMREGRESSORS_NUISANCE+2;
+                        NUMREGRESSORS_NUISANCE=NUMREGRESSORS_NUISANCE+4;
                     end
                     visualizeDesignMatrix=1;
 
@@ -651,21 +656,36 @@ function [output_GLM] = runGLM(tseriesMatSubj,NUMREGRESSORS_NUISANCE,nuisanceTSV
         %White matter nuisance regressors
         X(1,runStart:runEnd)=nuisanceTSVars.nuisanceTS_whitematter(1:thisRunLength,runNums(taskRunIndex));
         X(2,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_whitematter(1:thisRunLength,runNums(taskRunIndex)))];
+        % Ciric addition - include quadratics for white matter
+        X(3,runStart:runEnd)=nuisanceTSVars.nuisanceTS_whitematter(1:thisRunLength,runNums(taskRunIndex)).^2;
+        X(4,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_whitematter(1:thisRunLength,runNums(taskRunIndex)).^2)];
         %Ventricle
-        X(3,runStart:runEnd)=nuisanceTSVars.nuisanceTS_ventricles(1:thisRunLength,runNums(taskRunIndex));
-        X(4,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_ventricles(1:thisRunLength,runNums(taskRunIndex)))];
+        X(5,runStart:runEnd)=nuisanceTSVars.nuisanceTS_ventricles(1:thisRunLength,runNums(taskRunIndex));
+        X(6,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_ventricles(1:thisRunLength,runNums(taskRunIndex)))];
+        % Ciric addition - include quadratics for ventricles
+        X(7,runStart:runEnd)=nuisanceTSVars.nuisanceTS_ventricles(1:thisRunLength,runNums(taskRunIndex)).^2;
+        X(8,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_ventricles(1:thisRunLength,runNums(taskRunIndex)).^2)];
         if isfield(nuisanceTSVars,'nuisanceTS_motion')%add motion
             %Motion (12 regressors)
-            X(5:16,runStart:runEnd)=nuisanceTSVars.nuisanceTS_motion(:,1:thisRunLength,runNums(taskRunIndex));
+            X(9:20,runStart:runEnd)=nuisanceTSVars.nuisanceTS_motion(:,1:thisRunLength,runNums(taskRunIndex));
+            %Quadratic motion regressors (+12 regressors)
+            X(21:26,runStart:runEnd)=nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)).^2;
+            X(27:32,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)).^2); % first compute the quadratic, then compute derivative of quadratic
             %Run global signal regression if specified
             if GSR
-                X(17,runStart:runEnd)=nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex));
-                X(18,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)))];
+                X(33,runStart:runEnd)=nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex));
+                X(34,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)))];
+                % GSR quadratics
+                X(35,runStart:runEnd)=nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)).^2;
+                X(36,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)).^2)];
             end
         else
             if GSR
-                X(5,runStart:runEnd)=nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex));
-                X(6,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)))];
+                X(9,runStart:runEnd)=nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex));
+                X(10,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)))];
+                % GSR quadratics
+                X(11,runStart:runEnd)=nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)).^2;
+                X(12,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)).^2)];
             end
         end
         
