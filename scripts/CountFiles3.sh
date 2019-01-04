@@ -19,7 +19,7 @@ nContourFilesCorrect=12;
 nEbblocFilesCorrect=4
 nEbbregFilesCorrect=12;
 nRestFilesCorrect=4;
-
+#procAllFuncScans="n"
 for subjNum in $listOfSubjects
 do
     cd $nm_dirname/data/${subjNum}/
@@ -84,6 +84,12 @@ do
 #    echo "Subject ${subjNum} uses the new protocol."
 #else
 #    echo "Subject ${subjNum} uses the old protocol."
+#fi
+
+#if [[ $procAllFuncScans == "y" ]]; then  
+#    echo "Processing all functional scans"
+#else
+#    echo "Processing only certain functional scans"
 #fi
 
 done
