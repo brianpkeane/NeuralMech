@@ -1,7 +1,7 @@
- function [output] = Step2b_GLM_PostHCPpreproc_bpk(SUBJECTLIST)
+function [output] = Step2b_GLM_PostHCPpreproc_bpk(SUBJECTLIST)
 
 %% Models
-% Model1: Block model--All frag (including encoding) versus all illus (including encoding)
+% Model1: Block model- All frag (including encoding) versus all illus (including encoding)
 % Model2: Encode trials (instructions) or stimulus trials (2 regressors)
 % Model3: Encode (frag or illus), and stimtulus (frag/illus) (4 regressors)
 % Model4: Same as Model3, except that RT decides "duration" of stimulus
@@ -76,12 +76,12 @@ addpath('/projects/AnalysisTools/')
 addpath('/projects/AnalysisTools/gifti-1.6/')
 addpath('/projects/AnalysisTools/ReffuncConverter/')
 %Dataset-specific paths
-addpath('/projects3/NeuralMech/docs/scripts/')
+addpath('/projects3/NeuralMech/docs/docs/scripts/')
 
 %%Basic processing parameters
 if nargin<1
-     SUBJECTLIST={'sub-C05','sub-C13','sub-C14','sub-C15','sub-C22','sub-C25','sub-C26','sub-C27', 'sub-C29','sub-C32', 'sub-C33'};
-   % SUBJECTLIST={'sub-C05'};
+     %SUBJECTLIST={'sub-C05','sub-C13','sub-C14','sub-C15','sub-C22','sub-C25','sub-C26','sub-C27', 'sub-C29','sub-C32', 'sub-C33'};
+   SUBJECTLIST={'sub-C05'};
    %SUBJECTLIST={'sub-C05','sub-C13','sub-C14','sub-C15','sub-C22'};
 end
 numSubjs=length(SUBJECTLIST);
@@ -620,9 +620,6 @@ disp(['rm -rfv ' subjTemporaryAnalysisDir_mod])
 
 %msg2=sprintf('The total time elapsed %d.',modeli) ;
     %disp(msg2)
-    
-   
-
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -670,7 +667,7 @@ function [output_GLM] = runGLM(tseriesMatSubj,NUMREGRESSORS_NUISANCE,nuisanceTSV
             X(9:20,runStart:runEnd)=nuisanceTSVars.nuisanceTS_motion(:,1:thisRunLength,runNums(taskRunIndex));
             %Quadratic motion regressors (+12 regressors)
             X(21:26,runStart:runEnd)=nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)).^2;
-            X(27:32,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)).^2); % first compute the quadratic, then compute derivative of quadratic
+            X(27:32,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)).^2)]; % first compute the quadratic, then compute derivative of quadratic
             %Run global signal regression if specified
             if GSR
                 X(33,runStart:runEnd)=nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex));
@@ -702,7 +699,7 @@ function [output_GLM] = runGLM(tseriesMatSubj,NUMREGRESSORS_NUISANCE,nuisanceTSV
     end
 
     %Zscore the design matrix to make it easier to visualize
-    if visualizeDesignMatrix
+    if logical(visualizeDesignMatrix)
         disp('==Make sure to check over the design matrix visually==')
         Xzscored=zscore(X,0,2);
         Xzscored(logical(eye(size(Xzscored))))=0;
