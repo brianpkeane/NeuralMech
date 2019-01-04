@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 #sourcing script is the same for nm3 and amarel
 
 echo "This script must be SOURCED to correctly setup the environment prior to running any of the other HCP scripts contained here"
@@ -7,7 +7,7 @@ echo "This script must be SOURCED to correctly setup the environment prior to ru
 #basedir=/home/rdm146/
 #basedir=/projects/f_mc1689_1/
 
-HCPbasedir="/projects/f_mc1689_1/" # This is the location of the HCP folders.
+HCPbasedir="/projects/f_keanebp/" # This is the location of the HCP folders.
 
 # Set up FSL (if not already done so in the running environment)
 # Uncomment the following 2 lines (remove the leading #) and correct the FSLDIR setting for your setup
