@@ -94,7 +94,6 @@ tsExtract=`opts_GetOpt1 "--tsExtract" $@`
 #are appropriate for your sequence (consult HCP github, or the example scripts for each module in HCP_v2_prereqs/HCP_Pipelines_v3_25_1/Examples/Scripts if unsure); make sure that
 #parts of the volume/surface/fix/MSMall/dedriftresample pipelines that generate filenames for each subject contain appropriate *strings* for how you named your sequences
 
-procSpecificFuncScans="y" # Process only specific functional scans
 #########################
 # Set up HCP Environment - This is the customized environment for ColeLabMac Server
 # Figure out which server is being used (mac or linux)
@@ -165,6 +164,7 @@ bandpass=2000
 
 #########################
 # Data and scan parameters
+procAllFuncScans="y" # Process all functional scans
 # Notes, bpk: Everything after and including S31, C23, and B27, use 75 rather than 69 for the echo spacing values (DwellTime)
 listOfSubjectsNoViscomp="sub-C10"
 listOfSubjectsNoRetino=""
@@ -175,7 +175,7 @@ SmoothingFWHM="2"
 if [[ $listOfSubjectsOldProtocol == *"${subj}"* ]]; then
     DwellTime_SE="0.00069" # the dwell time or echo spacing of the SE FieldMaps (see protocol)
     DwellTime_fMRI="0.00069" # the dwell time or echo spacing of the fMRI multiband sequence (see protocol)
-    echo "Subject ${subjNum} uses the old protocol."
+    echo "Subject ${subj} uses the old protocol."
 elif [[ $listOfSubjectsOldProtocol != *"${subj}"* ]]; then
     DwellTime_SE="0.00075" # the dwell time or echo spacing of the SE FieldMaps (see protocol)
     DwellTime_fMRI="0.00075" # the dwell time or echo spacing of the fMRI multiband sequence (see protocol)
@@ -285,101 +285,103 @@ elif [ $fmriVol = true ]; then
     # note in this version you have to specify --biascorrection method; following parm is taken from the HCP volume example script; previous lab version of the pipeline might have used LEGACY, but SEBASED is better
     BiasCorrection="SEBASED" #NONE, LEGACY, or SEBASED: LEGACY uses the T1w bias field, SEBASED calculates bias field from spin echo images (which requires TOPUP distortion correction)
 
-  ## Rest scan, updated by bpk on 7/31/18, using run 2 of field maps for this part only.
-	echo "Running fMRI Volume processing on Rest scan"
-	fmriname="Task_Rest"
-	fmritcs="${unprocesseddir}/func/${subj}_task-rest_run-1_bold.nii.gz"
-	fmriscout="${unprocesseddir}/func/${subj}_task-rest_run-1_sbref.nii.gz"
-	fmap_neg_ap="${unprocesseddir}/fmap/${subj}_dir-AP_run-2_epi.nii.gz"
-	fmap_pos_pa="${unprocesseddir}/fmap/${subj}_dir-PA_run-2_epi.nii.gz"
-	${HCPPipe}/fMRIVolume/GenericfMRIVolumeProcessingPipeline.sh \
-		--path="${datadir}" \
-		--subject="${subj}" \
-		--fmriname="${fmriname}" \
-		--fmritcs="${fmritcs}" \
-		--fmriscout="${fmriscout}" \
-		--SEPhaseNeg="${fmap_neg_ap}" \
-		--SEPhasePos="${fmap_pos_pa}" \
-		--fmapmag="NONE" \
-		--fmapphase="NONE" \
-		--echospacing="$DwellTime_fMRI" \
-		--echodiff="NONE" \
-		--unwarpdir="${unwarpdir}" \
-		--fmrires="$fmrires" \
-		--dcmethod="TOPUP" \
-		--gdcoeffs="NONE" \
-		--printcom="" \
-		--biascorrection=${BiasCorrection} \
-		--topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
+    if [[ $procAllFuncScans == "y" ]]; then
+      ## Rest scan, updated by bpk on 7/31/18, using run 2 of field maps for this part only.
+    	echo "Running fMRI Volume processing on Rest scan"
+    	fmriname="Task_Rest"
+    	fmritcs="${unprocesseddir}/func/${subj}_task-rest_run-1_bold.nii.gz"
+    	fmriscout="${unprocesseddir}/func/${subj}_task-rest_run-1_sbref.nii.gz"
+    	fmap_neg_ap="${unprocesseddir}/fmap/${subj}_dir-AP_run-2_epi.nii.gz"
+    	fmap_pos_pa="${unprocesseddir}/fmap/${subj}_dir-PA_run-2_epi.nii.gz"
+    	${HCPPipe}/fMRIVolume/GenericfMRIVolumeProcessingPipeline.sh \
+    		--path="${datadir}" \
+    		--subject="${subj}" \
+    		--fmriname="${fmriname}" \
+    		--fmritcs="${fmritcs}" \
+    		--fmriscout="${fmriscout}" \
+    		--SEPhaseNeg="${fmap_neg_ap}" \
+    		--SEPhasePos="${fmap_pos_pa}" \
+    		--fmapmag="NONE" \
+    		--fmapphase="NONE" \
+    		--echospacing="$DwellTime_fMRI" \
+    		--echodiff="NONE" \
+    		--unwarpdir="${unwarpdir}" \
+    		--fmrires="$fmrires" \
+    		--dcmethod="TOPUP" \
+    		--gdcoeffs="NONE" \
+    		--printcom="" \
+    		--biascorrection=${BiasCorrection} \
+    		--topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
 
-    ## Viscomp Task Practice Scans, updated by bpk, 7/30/201
-    pushd ${unprocesseddir}/func/
-    numPracRuns=`ls *viscomp*bold.nii.gz | wc -l` # spits out 4.
-    echo "Viscomp task runs for $subj are $numPracRuns"
-    popd
-    for ((i=1;i<=${numPracRuns};++i)); do
-        # Count the scans starting from 1 (as opposed to 0). This is for the numbering for the nifti filename.
-        echo "Running fMRI Volume processing on Viscomp scan #${i}"
-        fmriname="Task_Viscomp${i}" # Changed by bpk, 7/31/2018
-        fmritcs="${unprocesseddir}/func/${subj}_task-viscomp_run-${i}_bold.nii.gz"
-		    fmriscout="${unprocesseddir}/func/${subj}_task-viscomp_run-${i}_sbref.nii.gz"
-		    fmap_neg_ap="${unprocesseddir}/fmap/${subj}_dir-AP_run-1_epi.nii.gz"
-		    fmap_pos_pa="${unprocesseddir}/fmap/${subj}_dir-PA_run-1_epi.nii.gz"
-        ${HCPPipe}/fMRIVolume/GenericfMRIVolumeProcessingPipeline.sh \
-            --path="${datadir}" \
-            --subject="${subj}" \
-            --fmriname="${fmriname}" \
-            --fmritcs="${fmritcs}" \
-            --fmriscout="${fmriscout}" \
-            --SEPhaseNeg="${fmap_neg_ap}" \
-            --SEPhasePos="${fmap_pos_pa}" \
-            --fmapmag="NONE" \
-            --fmapphase="NONE" \
-            --echospacing="$DwellTime_fMRI" \
-            --echodiff="NONE" \
-            --unwarpdir="${unwarpdir}" \
-            --fmrires="$fmrires" \
-            --dcmethod="TOPUP" \
-            --gdcoeffs="NONE" \
-            --printcom="" \
-            --biascorrection=${BiasCorrection} \
-            --topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
-    done
+        ## Viscomp Task Practice Scans, updated by bpk, 7/30/201
+        pushd ${unprocesseddir}/func/
+        numPracRuns=`ls *viscomp*bold.nii.gz | wc -l` # spits out 4.
+        echo "Viscomp task runs for $subj are $numPracRuns"
+        popd
+        for ((i=1;i<=${numPracRuns};++i)); do
+            # Count the scans starting from 1 (as opposed to 0). This is for the numbering for the nifti filename.
+            echo "Running fMRI Volume processing on Viscomp scan #${i}"
+            fmriname="Task_Viscomp${i}" # Changed by bpk, 7/31/2018
+            fmritcs="${unprocesseddir}/func/${subj}_task-viscomp_run-${i}_bold.nii.gz"
+    		    fmriscout="${unprocesseddir}/func/${subj}_task-viscomp_run-${i}_sbref.nii.gz"
+    		    fmap_neg_ap="${unprocesseddir}/fmap/${subj}_dir-AP_run-1_epi.nii.gz"
+    		    fmap_pos_pa="${unprocesseddir}/fmap/${subj}_dir-PA_run-1_epi.nii.gz"
+            ${HCPPipe}/fMRIVolume/GenericfMRIVolumeProcessingPipeline.sh \
+                --path="${datadir}" \
+                --subject="${subj}" \
+                --fmriname="${fmriname}" \
+                --fmritcs="${fmritcs}" \
+                --fmriscout="${fmriscout}" \
+                --SEPhaseNeg="${fmap_neg_ap}" \
+                --SEPhasePos="${fmap_pos_pa}" \
+                --fmapmag="NONE" \
+                --fmapphase="NONE" \
+                --echospacing="$DwellTime_fMRI" \
+                --echodiff="NONE" \
+                --unwarpdir="${unwarpdir}" \
+                --fmrires="$fmrires" \
+                --dcmethod="TOPUP" \
+                --gdcoeffs="NONE" \
+                --printcom="" \
+                --biascorrection=${BiasCorrection} \
+                --topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
+        done
 
-    ## Retinotopy Scans
-    #first need to generate number of scans (given aborted runs etc)
-    pushd ${unprocesseddir}/func/
-    numTestRuns=`ls *retino*bold.nii.gz | wc -l`
-    echo "Retino task runs for $subj are $numTestRuns"
-    popd
-    for ((i=1;i<=${numTestRuns};++i)); do
-        # Count the scans starting from 1 (as opposed to 0). This is for the numbering for the nifti filename.
-        echo "Running fMRI Volume processing on Retino Task scan #${i}"
-        fmriname="Task_Retino${i}"
-        fmritcs="${unprocesseddir}/func/${subj}_task-retino_run-${i}_bold.nii.gz"
-		    fmriscout="${unprocesseddir}/func/${subj}_task-retino_run-${i}_sbref.nii.gz"
-		    fmap_neg_ap="${unprocesseddir}/fmap/${subj}_dir-AP_run-1_epi.nii.gz"
-		    fmap_pos_pa="${unprocesseddir}/fmap/${subj}_dir-PA_run-1_epi.nii.gz"
-        ${HCPPipe}/fMRIVolume/GenericfMRIVolumeProcessingPipeline.sh \
-            --path="${datadir}" \
-            --subject="${subj}" \
-            --fmriname="${fmriname}" \
-            --fmritcs="${fmritcs}" \
-            --fmriscout="${fmriscout}" \
-            --SEPhaseNeg="${fmap_neg_ap}" \
-            --SEPhasePos="${fmap_pos_pa}" \
-            --fmapmag="NONE" \
-            --fmapphase="NONE" \
-            --echospacing="$DwellTime_fMRI" \
-            --echodiff="NONE" \
-            --unwarpdir="${unwarpdir}" \
-            --fmrires="$fmrires" \
-            --dcmethod="TOPUP" \
-            --gdcoeffs="NONE" \
-            --printcom="" \
-            --biascorrection=${BiasCorrection} \
-            --topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
-    done
+        ## Retinotopy Scans
+        #first need to generate number of scans (given aborted runs etc)
+        pushd ${unprocesseddir}/func/
+        numTestRuns=`ls *retino*bold.nii.gz | wc -l`
+        echo "Retino task runs for $subj are $numTestRuns"
+        popd
+        for ((i=1;i<=${numTestRuns};++i)); do
+            # Count the scans starting from 1 (as opposed to 0). This is for the numbering for the nifti filename.
+            echo "Running fMRI Volume processing on Retino Task scan #${i}"
+            fmriname="Task_Retino${i}"
+            fmritcs="${unprocesseddir}/func/${subj}_task-retino_run-${i}_bold.nii.gz"
+    		    fmriscout="${unprocesseddir}/func/${subj}_task-retino_run-${i}_sbref.nii.gz"
+    		    fmap_neg_ap="${unprocesseddir}/fmap/${subj}_dir-AP_run-1_epi.nii.gz"
+    		    fmap_pos_pa="${unprocesseddir}/fmap/${subj}_dir-PA_run-1_epi.nii.gz"
+            ${HCPPipe}/fMRIVolume/GenericfMRIVolumeProcessingPipeline.sh \
+                --path="${datadir}" \
+                --subject="${subj}" \
+                --fmriname="${fmriname}" \
+                --fmritcs="${fmritcs}" \
+                --fmriscout="${fmriscout}" \
+                --SEPhaseNeg="${fmap_neg_ap}" \
+                --SEPhasePos="${fmap_pos_pa}" \
+                --fmapmag="NONE" \
+                --fmapphase="NONE" \
+                --echospacing="$DwellTime_fMRI" \
+                --echodiff="NONE" \
+                --unwarpdir="${unwarpdir}" \
+                --fmrires="$fmrires" \
+                --dcmethod="TOPUP" \
+                --gdcoeffs="NONE" \
+                --printcom="" \
+                --biascorrection=${BiasCorrection} \
+                --topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
+        done
+    fi # done with if-statement, processing all functional scans
 
     ## Contour Scans
     #first need to generate number of scans (given aborted runs etc)
@@ -415,6 +417,7 @@ elif [ $fmriVol = true ]; then
             --biascorrection=${BiasCorrection} \
             --topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
     fi
+
     ## EbbLoc Scan
     ## Rest scan, updated by bpk on 7/31/18, using run 2 of field maps for this part only.
   	echo "Running fMRI Volume processing on EbbLoc scan"
@@ -487,30 +490,11 @@ if [ -z "$fmriSurf" ]; then
     echo "Skipping fMRI Surface Processing node"
 elif [ $fmriSurf = true ]; then
 
-    # set input name
-    fmriname="Task_Rest"
-    ${HCPPipe}/fMRISurface/GenericfMRISurfaceProcessingPipeline.sh \
-   		--path="${datadir}" \
-        --subject="${subj}" \
-        --fmriname="${fmriname}" \
-        --fmrires="$fmrires" \
-        --lowresmesh="$LowResMeshes" \
-        --smoothingFWHM=$SmoothingFWHM \
-        --grayordinatesres="$GrayordinatesResolutions" \
-        --regname=$RegName
-
-    ## Task Viscomp
-    #first need to generate number of scans (given aborted runs etc)
-    pushd ${unprocesseddir}/func/
-    numPracRuns=`ls *viscomp*bold.nii.gz | wc -l`
-    echo "Viscomp Task runs for $subj are $numPracRuns"
-    popd
-    for ((i=1;i<=${numPracRuns};++i)); do
-        # Count the scans starting from 1 (as opposed to 0). This is for the numbering for the nifti filename.
+    if [[ $procAllFuncScans == "y" ]]; then
         # set input name
-        fmriname="Task_Viscomp${i}"
+        fmriname="Task_Rest"
         ${HCPPipe}/fMRISurface/GenericfMRISurfaceProcessingPipeline.sh \
-            --path="${datadir}" \
+       		--path="${datadir}" \
             --subject="${subj}" \
             --fmriname="${fmriname}" \
             --fmrires="$fmrires" \
@@ -518,28 +502,50 @@ elif [ $fmriSurf = true ]; then
             --smoothingFWHM=$SmoothingFWHM \
             --grayordinatesres="$GrayordinatesResolutions" \
             --regname=$RegName
-    done
 
-    ## Task Retino
-    #first need to generate number of scans (given aborted runs etc)
-    pushd ${unprocesseddir}/func/
-    numTestRuns=`ls *retino*bold.nii.gz | wc -l`
-    echo "Retino Task runs for $subj are $numTestRuns"
-    popd
-    for ((i=1;i<=${numTestRuns};++i)); do
-        # Count the scans starting from 1 (as opposed to 0). This is for the numbering for the nifti filename.
-        # set input name
-        fmriname="Task_Retino${i}"
-        ${HCPPipe}/fMRISurface/GenericfMRISurfaceProcessingPipeline.sh \
-            --path="${datadir}" \
-            --subject="${subj}" \
-            --fmriname="${fmriname}" \
-            --fmrires="$fmrires" \
-            --lowresmesh="$LowResMeshes" \
-            --smoothingFWHM=$SmoothingFWHM \
-            --grayordinatesres="$GrayordinatesResolutions" \
-            --regname=$RegName
-    done
+        ## Task Viscomp
+        #first need to generate number of scans (given aborted runs etc)
+        pushd ${unprocesseddir}/func/
+        numPracRuns=`ls *viscomp*bold.nii.gz | wc -l`
+        echo "Viscomp Task runs for $subj are $numPracRuns"
+        popd
+        for ((i=1;i<=${numPracRuns};++i)); do
+            # Count the scans starting from 1 (as opposed to 0). This is for the numbering for the nifti filename.
+            # set input name
+            fmriname="Task_Viscomp${i}"
+            ${HCPPipe}/fMRISurface/GenericfMRISurfaceProcessingPipeline.sh \
+                --path="${datadir}" \
+                --subject="${subj}" \
+                --fmriname="${fmriname}" \
+                --fmrires="$fmrires" \
+                --lowresmesh="$LowResMeshes" \
+                --smoothingFWHM=$SmoothingFWHM \
+                --grayordinatesres="$GrayordinatesResolutions" \
+                --regname=$RegName
+        done
+
+        ## Task Retino
+        #first need to generate number of scans (given aborted runs etc)
+        pushd ${unprocesseddir}/func/
+        numTestRuns=`ls *retino*bold.nii.gz | wc -l`
+        echo "Retino Task runs for $subj are $numTestRuns"
+        popd
+        for ((i=1;i<=${numTestRuns};++i)); do
+            # Count the scans starting from 1 (as opposed to 0). This is for the numbering for the nifti filename.
+            # set input name
+            fmriname="Task_Retino${i}"
+            ${HCPPipe}/fMRISurface/GenericfMRISurfaceProcessingPipeline.sh \
+                --path="${datadir}" \
+                --subject="${subj}" \
+                --fmriname="${fmriname}" \
+                --fmrires="$fmrires" \
+                --lowresmesh="$LowResMeshes" \
+                --smoothingFWHM=$SmoothingFWHM \
+                --grayordinatesres="$GrayordinatesResolutions" \
+                --regname=$RegName
+        done
+    fi # end of if-statement, processing all functional scans.
+
 
     ## Task Contour
     #first need to generate number of scans (given aborted runs etc)
@@ -689,47 +695,54 @@ elif [ "$dedriftResample" == "true" ]; then
 	Maps="sulc@curvature@corrThickness@thickness"
 	#delimited map name strings corresponding to myelin maps e.g. MyelinMap SmoothedMyelinMap) No _BC, this will be reapplied
 	MyelinMaps="MyelinMap@SmoothedMyelinMap"
+  if [[ $procAllFuncScans == "y" ]]; then
+    	#generate run names for Task_Retino and Task_Viscomp
+        pushd ${unprocesseddir}/func/
+        numViscompRuns=`ls *viscomp*bold.nii.gz | wc -l`
+        echo " Task Viscomp runs for $subj are $numViscompRuns"
+        popd
 
-	#generate run names for Task_Retino and Task_Viscomp
-    pushd ${unprocesseddir}/func/
-    numViscompRuns=`ls *viscomp*bold.nii.gz | wc -l`
-    echo " Task Viscomp runs for $subj are $numViscompRuns"
-    popd
+        pushd ${unprocesseddir}/func/
+        numRetinoRuns=`ls *retino*bold.nii.gz | wc -l`
+        echo "Test Retino task runs for $subj are $numRetinoRuns"
+        popd
+  fi
 
-    pushd ${unprocesseddir}/func/
-    numRetinoRuns=`ls *retino*bold.nii.gz | wc -l`
-    echo "Test Retino task runs for $subj are $numRetinoRuns"
-    popd
+  pushd ${unprocesseddir}/func/
+  numContourRuns=`ls *contour*bold.nii.gz | wc -l`
+  echo "Test Contour task runs for $subj are $numContourRuns"
+  popd
 
-    pushd ${unprocesseddir}/func/
-    numContourRuns=`ls *contour*bold.nii.gz | wc -l`
-    echo "Test Contour task runs for $subj are $numContourRuns"
-    popd
+  pushd ${unprocesseddir}/func/
+  numEbbLocRuns=`ls *ebbloc*bold.nii.gz | wc -l`
+  echo "Test EbbLoc task runs for $subj are $numEbbLocRuns"
+  popd
 
-    pushd ${unprocesseddir}/func/
-    numEbbLocRuns=`ls *ebbloc*bold.nii.gz | wc -l`
-    echo "Test EbbLoc task runs for $subj are $numEbbLocRuns"
-    popd
+  pushd ${unprocesseddir}/func/
+  numEbbRegRuns=`ls *ebbreg*bold.nii.gz | wc -l`
+  echo "Test EbbReg task runs for $subj are $numEbbRegRuns"
+  popd
 
-    pushd ${unprocesseddir}/func/
-    numEbbRegRuns=`ls *ebbreg*bold.nii.gz | wc -l`
-    echo "Test EbbReg task runs for $subj are $numEbbRegRuns"
-    popd
+  if [[ $procAllFuncScans == "y" ]]; then
+    	run_names="Task_Viscomp1" #initial string
+        for ((i=2;i<=${numViscompRuns};++i)); do
+    		run_names="${run_names}@Task_Viscomp${i}"
+        done
 
-	run_names="Task_Viscomp1" #initial string
-    for ((i=2;i<=${numViscompRuns};++i)); do
-		run_names="${run_names}@Task_Viscomp${i}"
-    done
+    	run_names="${run_names}@Task_Retino1"
+    	  for ((i=2;i<=${numRetinoRuns};++i)); do
+    		run_names="${run_names}@Task_Retino${i}"
+        done
+  fi
 
-	run_names="${run_names}@Task_Retino1"
-	  for ((i=2;i<=${numRetinoRuns};++i)); do
-		run_names="${run_names}@Task_Retino${i}"
-    done
-
-  run_names="${run_names}@Task_Contour1"
-    for ((i=2;i<=${numContourRuns};++i)); do
+  if [[ $procAllFuncScans == "y" ]]; then
+      run_names="${run_names}@Task_Contour1" # this statement is correct!
+  elif [[ $procAllFuncScans == "n" ]]; then
+    run_names="Task_Contour1"
+  fi
+  for ((i=2;i<=${numContourRuns};++i)); do
     run_names="${run_names}@Task_Contour${i}"
-    done
+  done
 
   run_names="${run_names}@Task_EbbLoc"
 #    for ((i=2;i<=${numRetinoRuns};++i)); do
@@ -748,7 +761,11 @@ elif [ "$dedriftResample" == "true" ]; then
 	#*@ delimited fMRIName strings corresponding to maps that will not have ICA+FIX reapplied to them (likely not to be used in the future as ICA+FIX will be recommended for all fMRI data) If none are to be used, specify "NONE".
 	#tfMRINames="tfMRI_WM_LR tfMRI_WM_RL tfMRI_GAMBLING_LR tfMRI_GAMBLING_RL tfMRI_MOTOR_LR tfMRI_MOTOR_RL tfMRI_LANGUAGE_LR tfMRI_LANGUAGE_RL tfMRI_SOCIAL_LR tfMRI_SOCIAL_RL tfMRI_RELATIONAL_LR tfMRI_RELATIONAL_RL tfMRI_EMOTION_LR tfMRI_EMOTION_RL" #Space delimited list or NONE
 	#*not sure if run numbers need to be added for task scans?
-	tfMRINames="Task_Rest@${run_names}"
+  if [[ $procAllFuncScans == "y" ]]; then
+    tfMRINames="Task_Rest@${run_names}"
+  elif [[ $procAllFuncScans == "n" ]]; then
+    tfMRINames="${run_names}"
+  fi
 	echo "tfMRINames for this subject are $tfMRINames"
 
 	#Should equal previous grayordiantes smoothing in fMRISurface (because we are resampling from unsmoothed native mesh timeseries - already set
