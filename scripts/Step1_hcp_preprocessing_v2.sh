@@ -94,7 +94,7 @@ tsExtract=`opts_GetOpt1 "--tsExtract" $@`
 #are appropriate for your sequence (consult HCP github, or the example scripts for each module in HCP_v2_prereqs/HCP_Pipelines_v3_25_1/Examples/Scripts if unsure); make sure that
 #parts of the volume/surface/fix/MSMall/dedriftresample pipelines that generate filenames for each subject contain appropriate *strings* for how you named your sequences
 
-procOnlySpecificFuncScans="y" # Process only specific functional scans
+procSpecificFuncScans="y" # Process only specific functional scans
 #########################
 # Set up HCP Environment - This is the customized environment for ColeLabMac Server
 # Figure out which server is being used (mac or linux)
@@ -144,7 +144,6 @@ fi
 # Set up HCP Pipeline Environment
 . ${EnvScript}
 ########################
-
 
 #########################
 # HCP Conventions and Parameters - shouldn't need to edit this
@@ -415,34 +414,34 @@ elif [ $fmriVol = true ]; then
             --printcom="" \
             --biascorrection=${BiasCorrection} \
             --topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
-
-          ## EbbLoc Scan
-          ## Rest scan, updated by bpk on 7/31/18, using run 2 of field maps for this part only.
-        	echo "Running fMRI Volume processing on EbbLoc scan"
-        	fmriname="Task_EbbLoc"
-        	fmritcs="${unprocesseddir}/func/${subj}_task-ebbloc_run-1_bold.nii.gz"
-        	fmriscout="${unprocesseddir}/func/${subj}_task-ebbloc_run-1_sbref.nii.gz"
-        	fmap_neg_ap="${unprocesseddir}/fmap/${subj}_dir-AP_run-2_epi.nii.gz"
-        	fmap_pos_pa="${unprocesseddir}/fmap/${subj}_dir-PA_run-2_epi.nii.gz"
-        	${HCPPipe}/fMRIVolume/GenericfMRIVolumeProcessingPipeline.sh \
-        		--path="${datadir}" \
-        		--subject="${subj}" \
-        		--fmriname="${fmriname}" \
-        		--fmritcs="${fmritcs}" \
-        		--fmriscout="${fmriscout}" \
-        		--SEPhaseNeg="${fmap_neg_ap}" \
-        		--SEPhasePos="${fmap_pos_pa}" \
-        		--fmapmag="NONE" \
-        		--fmapphase="NONE" \
-        		--echospacing="$DwellTime_fMRI" \
-        		--echodiff="NONE" \
-        		--unwarpdir="${unwarpdir}" \
-        		--fmrires="$fmrires" \
-        		--dcmethod="TOPUP" \
-        		--gdcoeffs="NONE" \
-        		--printcom="" \
-        		--biascorrection=${BiasCorrection} \
-        		--topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
+    fi
+    ## EbbLoc Scan
+    ## Rest scan, updated by bpk on 7/31/18, using run 2 of field maps for this part only.
+  	echo "Running fMRI Volume processing on EbbLoc scan"
+  	fmriname="Task_EbbLoc"
+  	fmritcs="${unprocesseddir}/func/${subj}_task-ebbloc_run-1_bold.nii.gz"
+  	fmriscout="${unprocesseddir}/func/${subj}_task-ebbloc_run-1_sbref.nii.gz"
+  	fmap_neg_ap="${unprocesseddir}/fmap/${subj}_dir-AP_run-2_epi.nii.gz"
+  	fmap_pos_pa="${unprocesseddir}/fmap/${subj}_dir-PA_run-2_epi.nii.gz"
+  	${HCPPipe}/fMRIVolume/GenericfMRIVolumeProcessingPipeline.sh \
+  		--path="${datadir}" \
+  		--subject="${subj}" \
+  		--fmriname="${fmriname}" \
+  		--fmritcs="${fmritcs}" \
+  		--fmriscout="${fmriscout}" \
+  		--SEPhaseNeg="${fmap_neg_ap}" \
+  		--SEPhasePos="${fmap_pos_pa}" \
+  		--fmapmag="NONE" \
+  		--fmapphase="NONE" \
+  		--echospacing="$DwellTime_fMRI" \
+  		--echodiff="NONE" \
+  		--unwarpdir="${unwarpdir}" \
+  		--fmrires="$fmrires" \
+  		--dcmethod="TOPUP" \
+  		--gdcoeffs="NONE" \
+  		--printcom="" \
+  		--biascorrection=${BiasCorrection} \
+  		--topupconfig="${HCPPIPEDIR_Config}/b02b0.cnf"
 
       ## EbbReg Scans
       #first need to generate number of scans (given aborted runs etc)
@@ -728,7 +727,7 @@ elif [ "$dedriftResample" == "true" ]; then
     done
 
   run_names="${run_names}@Task_Contour1"
-    for ((i=2;i<=${numRetinoRuns};++i)); do
+    for ((i=2;i<=${numContourRuns};++i)); do
     run_names="${run_names}@Task_Contour${i}"
     done
 
@@ -738,7 +737,7 @@ elif [ "$dedriftResample" == "true" ]; then
 #    done
 
   run_names="${run_names}@Task_EbbReg1"
-    for ((i=2;i<=${numRetinoRuns};++i)); do
+    for ((i=2;i<=${numEbbRegRuns};++i)); do
     run_names="${run_names}@Task_EbbReg${i}"
     done
 
