@@ -1,4 +1,4 @@
- function [output] = Step2b_GLM_PostHCPpreproc_bpk(SUBJECTLIST)
+function [output] = Step2b_GLM_PostHCPpreproc_bpk(SUBJECTLIST)
 
 %% Models
 % Model1: Block model--All frag (including encoding) versus all illus (including encoding)
@@ -66,8 +66,6 @@
     % Might have to use ciftisavereset as the data matrices will have a different number of maps/columns from what you started with: ciftisavereset(newcii,'path/to/newfile','path/to/wb_command');
 % 5. Use workbench to visualize - use the Conte 32k atlas as underlay, and the zstat images as the overlay.
 
-
-
 % trials within block
 
 %timeStart=tic;
@@ -76,7 +74,7 @@ addpath('/projects/AnalysisTools/')
 addpath('/projects/AnalysisTools/gifti-1.6/')
 addpath('/projects/AnalysisTools/ReffuncConverter/')
 %Dataset-specific paths
-addpath('/projects3/NeuralMech/docs/docs/scripts/')
+addpath('/projects3/NeuralMech/docs/scripts/')
 
 %%Basic processing parameters
 if nargin<1
@@ -512,7 +510,6 @@ if execute==1
                     output.taskGLMVars{subjIndex} = taskGLMVars;
                 end
 
-
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 %% TEMPORAL FILTERING (and motion scrubbing) %%%%%
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -637,7 +634,7 @@ function [output_GLM] = runGLM(tseriesMatSubj,NUMREGRESSORS_NUISANCE,nuisanceTSV
     %Add 2 regressors for each run (to account for mean and linear trend within each run)
     numregressors_extra=length(runNums)+length(runNums);
 
-    %Concatenate runs, Organize nuisance regressors
+    %Concatenate runs, Organize nuisanceçcc regressors
     tseriesMatSubj_fMRIconcat=zeros(NUMPARCELS,sum(RUNLENGTHS(runNums)));
     X=zeros(NUMREGRESSORS+numregressors_extra,sum(RUNLENGTHS(runNums)));
     tmask=ones(sum(RUNLENGTHS(runNums)),1);
@@ -672,12 +669,7 @@ function [output_GLM] = runGLM(tseriesMatSubj,NUMREGRESSORS_NUISANCE,nuisanceTSV
             X(9:20,runStart:runEnd)=nuisanceTSVars.nuisanceTS_motion(:,1:thisRunLength,runNums(taskRunIndex));
             %Quadratic motion regressors (+12 regressors)
             X(21:26,runStart:runEnd)=nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)).^2;
-            %xxx=(size(X(27:32,runStart:runEnd))) % 6 x 765 matrix
-            %uuu=size(nuisanceTSVars.nuisanceTS_motion)
-            %yyy=size(diff(nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)), 1, 2).^2) 
-            %X(27:32,runStart:runEnd)=[zeros(1,thisRunLength); diff(nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)).^2)]; % first compute the quadratic, then compute derivative of quadratic
-            X(27:32,runStart:runEnd)=[zeros(6,1), diff(nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)), 1, 2).^2]; 
-            %Run global signal regression if specified
+            X(27:32,runStart:runEnd)=[zeros(6,1), diff(nuisanceTSVars.nuisanceTS_motion(1:6,1:thisRunLength,runNums(taskRunIndex)), 1, 2).^2];%Run global signal regression if specified
             if GSR
                 X(33,runStart:runEnd)=nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex));
                 X(34,runStart:runEnd)=[0; diff(nuisanceTSVars.nuisanceTS_wholebrain(1:thisRunLength,runNums(taskRunIndex)))];

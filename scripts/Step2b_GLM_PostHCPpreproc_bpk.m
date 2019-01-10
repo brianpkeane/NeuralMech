@@ -1,12 +1,18 @@
  function [output] = Step2b_GLM_PostHCPpreproc_bpk(SUBJECTLIST)
 
-%% Models
+%% Models for viscomp
 % Model1: Block model--All frag (including encoding) versus all illus (including encoding)
 % Model2: Encode trials (instructions) or stimulus trials (2 regressors)
 % Model3: Encode (frag or illus), and stimtulus (frag/illus) (4 regressors)
 % Model4: Same as Model3, except that RT decides "duration" of stimulus
 % Model5: New: Same as Model3, except that RT is used as additional regressor (6 regressors)
 % Model6: New: Same as model 3, but does not use regressors for motion
+%% Models for contour
+% Model1: stimulus trials (1 regressor)
+% Model2: stimulus (align/misalign) (2 regressors)
+% Model3: RT only  (2 regressors; align/misalign)
+% Model4 stimulus + RT (4 regressors; align: stim,RT; misalign: stim,RT)
+% Model5: same as model 2, except uses stimulus duration
 
 % This function runs preprocessing and GLM analysis, after the HCP minimal preproccessing pipeline has been run.
 % It is designed to parcellate a dataset into a set of regions, which are then preprocessed.
@@ -78,10 +84,14 @@ addpath('/projects/AnalysisTools/ReffuncConverter/')
 %Dataset-specific paths
 addpath('/projects3/NeuralMech/docs/scripts/')
 
+%% Choose the experiment to analyze
+exp='c';
 %%Basic processing parameters
 if nargin<1
      SUBJECTLIST={'sub-C05','sub-C13','sub-C14','sub-C15','sub-C22','sub-C25','sub-C26','sub-C27', 'sub-C29','sub-C32', 'sub-C33'};
-   % SUBJECTLIST={'sub-C05'};
+   if exp=='c'
+       SUBJECTLIST(1)=[]; %The first control subject (sub-C05) ran a different version of the task (with 390 measurements)
+   end
    %SUBJECTLIST={'sub-C05','sub-C13','sub-C14','sub-C15','sub-C22'};
 end
 numSubjs=length(SUBJECTLIST);
@@ -94,12 +104,19 @@ FRAMESTOSKIP=0; % should ideally skip first 5 TRs for Rest only
 func_info=struct;
 % Be sure to put "rest" run first below:
 %testinfo.RUNNAMES = {'Task_Rest','Task_Retino1','Task_Retino2','Task_Retino3','Task_Viscomp1','Task_TViscomp2','Task_Viscomp3','Task_Viscomp4'};
-func_info.RUNNAMES = {'Task_Rest','Task_Viscomp1','Task_Viscomp2','Task_Viscomp3','Task_Viscomp4'};
-func_info.numRuns=length(func_info.RUNNAMES);
+if exp=='v' %viscomp
+    func_info.RUNNAMES = {'Task_Rest','Task_Viscomp1','Task_Viscomp2','Task_Viscomp3','Task_Viscomp4'};
+    func_info.RUNLENGTHS = [765, 281*ones(1,length(func_info.RUNNAMES)-1)];
+elseif exp=='c' %contour integration
+    func_info.RUNNAMES = {'Task_Rest','Task_Contour1','Task_Contour2','Task_Contour3'};
+    func_info.RUNLENGTHS = [765, 314*ones(1,length(func_info.RUNNAMES)-1)];
+    size(func_info.RUNLENGTHS)
+end
+    func_info.numRuns=length(func_info.RUNNAMES);
 func_info.RESTRUNS=1;
-func_info.TASKRUNS=2:5;
+func_info.TASKRUNS=2:length(func_info.RUNNAMES);
 %func_info.RUNLENGTHS = [765, 306, 306, 306, 281, 281, 281, 281];
-func_info.RUNLENGTHS = [765, 281, 281, 281, 281];
+
 
 %parcel info
 L_parcelCIFTIFile='/projects/AnalysisTools/ParcelsGlasser2016/Q1-Q6_RelatedParcellation210.L.CorticalAreas_dil_Colors.32k_fs_LR.dlabel.nii';
@@ -120,13 +137,21 @@ IMPLEMENT_MOTIONSCRUBBING=2;     %Set to 1 for yes, 0 for no; **2=should 1 for r
 BASEDIR='/projects3/NeuralMech/';
 timingfileDir=[BASEDIR 'data/timingFiles/']; %these files give regressors
 datadir=[BASEDIR 'data/preprocessed/'];
-outputdatadir=[BASEDIR '/data/results/GLM/'];
+if exp=='v'
+    outputdatadir=[BASEDIR '/data/results/GLM_viscomp/'];
+    ANALYSISNAME='GLMs_Viscomp';
+    stim_model_input={'model1','model2','model3'};
+elseif exp=='c'
+    outputdatadir=[BASEDIR '/data/results/GLM_contour/'];
+    ANALYSISNAME='GLMs_Contour';
+    stim_model_input={'model1','model2','model3', 'model4', 'model5'};
+end
 if ~exist(outputdatadir, 'dir'); mkdir(outputdatadir); end
 
 %**Set up Model names (should help input StimFiles + name output struct
 % stim_model_input={'Model1a_1Taskreg_varblock','Model1b_1Taskreg_consepochlength','Model1c_1Taskreg_varepochRT',...
 %    'Model2a_64Taskreg_varblock','Model2b_64Taskreg_consepochlength','Model2c_64Taskreg_varepochRT'};
-stim_model_input={'model1','model2','model3', 'model4', 'model5', 'model6'};
+
 
 %set input suffix which will be chosen based on loop below (between MSMsulc
 %and MSMsulc_MSMall
@@ -137,7 +162,7 @@ MSM_struct_name={'sulc','msmAll'};
 
 %**determines output filename - set based on 12 GLM variations (with
 %additional suffix set by Prac/Test)
-ANALYSISNAME='GLMs_Viscomp';
+
 
 %% Iterate through subjects 
 %Start loops: model->MSM version
@@ -145,7 +170,7 @@ GLMOutput=struct;
 execute=1; % set to 0 if GLM has already been run
 
 if execute==1
-    for modeli=1:3%length(stim_model_input)
+    for modeli=1:length(stim_model_input)
         for MSM_version=1:length(MSM_input)
             %set names (eg for output name)
             model_name=stim_model_input{modeli};
@@ -228,8 +253,12 @@ if execute==1
 
                 %Set to 1 if you want to run this procedure again for subjects that already had it run before (otherwise it will load from previously saved files)
                 RERUN_PREPNUISANCEREG=1;
-                savedNuisRegfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_nuisanceTSVars.mat'];
-
+                if exp=='v'
+                    savedNuisRegfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_nuisanceTSVars.mat'];
+                elseif exp=='c'
+                    savedNuisRegfile=[subjTemporaryAnalysisDir 'Contour_' subjName '_nuisanceTSVars.mat'];
+                end
+                    
                 if or(RERUN_PREPNUISANCEREG == 1, ~exist(savedNuisRegfile, 'file'))
                     subjMaskDir=[subjDir '/masks/'];
                     if ~exist(subjMaskDir, 'dir'); mkdir(subjMaskDir); end
@@ -362,9 +391,9 @@ if execute==1
                     nuisanceTSVars.nuisanceTS_motion=nuisanceTS_motion;
                     nuisanceTSVars.FD_motion=FD_motion;
                     nuisanceTSVarsRest=nuisanceTSVars; % use this below for resting state analysis.
-                    if modeli>=5 
-                        nuisanceTSVars=rmfield(nuisanceTSVars,'nuisanceTS_motion'); %remove 12 regressors of motion
-                    end
+%                     if modeli>=5 % Deanna's suggestion
+%                         nuisanceTSVars=rmfield(nuisanceTSVars,'nuisanceTS_motion'); %remove 12 regressors of motion
+%                     end
                    
                     %Save nuisance time series to file (for more efficient processing in future when EXECUTE_PREPNUISANCEREG=0)
                     disp(['Saving results to: ' savedNuisRegfile])
@@ -383,8 +412,13 @@ if execute==1
                 %%%% PREPARE TASK REGRESSORS %%%%%%%%%%%%%%
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
                 RERUN_TASKREGRESSORPREP=1;  %Set to 1 if you want to run this procedure again
-                savedTaskRegfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_TaskRegressorVars.mat'];
-                timingFileThisSub=[timingfileDir 'Viscomp_' subjName '_TaskRegressorVars.mat'];%Only execute this if EXECUTE_TASKREGRESSORPREP==1 or the saved file doesn't exist for this subject, but skip if no TASKRUNS (i.e., only rest data are included)
+                if exp=='v'
+                    savedTaskRegfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_TaskRegressorVars.mat'];
+                    timingFileThisSub=[timingfileDir 'Viscomp_' subjName '_TaskRegressorVars.mat'];%Only execute this if EXECUTE_TASKREGRESSORPREP==1 or the saved file doesn't exist for this subject, but skip if no TASKRUNS (i.e., only rest data are included)
+                elseif exp=='c'
+                    savedTaskRegfile=[subjTemporaryAnalysisDir 'Contour_TaskRegressorVars.mat']; %Same for all subjects
+                    timingFileThisSub=[timingfileDir 'Contour_TaskRegressorVars.mat'];% Same for all subjects
+                end
                 if RERUN_TASKREGRESSORPREP==1 % load timing, add the hrf values as a separate structure field, and then resave.
                     if isempty(func_info.TASKRUNS)% || ~exist( timingFileThisSub, 'file')
                        error('Either not enough task runs or the stimulus timing file cannot be found.') 
@@ -395,16 +429,36 @@ if execute==1
                     %Convolve with canonical HRF
                     hrf=spm_hrf(TR_INSECONDS);
                     if modeli==1
-                        taskdesignmat=TwoRegresMatBlock;
+                        if exp=='v'
+                            taskdesignmat=TwoRegresMatBlock;
+                        else
+                            taskdesignmat=OneRegresMatStim; 
+                        end
                     elseif modeli==2
-                        taskdesignmat=TwoRegresMat;
+                        if exp=='v'
+                            taskdesignmat=TwoRegresMat;
+                        elseif exp=='c'
+                            taskdesignmat=TwoRegresMatStim;
+                        end
                     elseif modeli==3
-                        taskdesignmat=FourRegresMatStim;
+                        if exp=='v'
+                            taskdesignmat=FourRegresMatStim;
+                        elseif exp=='c'
+                            taskdesignmat=TwoRegresMatRT;
+                        end
                     elseif modeli==4
-                        taskdesignmat=FourRegresMatRT;
+                        if exp=='v'
+                            taskdesignmat=FourRegresMatRT;
+                        elseif exp=='c'
+                            taskdesignmat=FourRegresMatStimRT;
+                        end
                     elseif modeli==5
-                        taskdesignmat=SixRegresMatStimRT; %separate regressors for stim and RT; fewer nuissance regressors
-                    elseif modeli==6
+                        if exp=='v'
+                            taskdesignmat=SixRegresMatStimRT; %separate regressors for stim and RT; fewer nuissance regressors
+                        elseif exp=='c'
+                            taskdesignmat=TwoRegresMatDurStim;
+                        end
+                    elseif modeli==6 && exp=='v'
                         taskdesignmat=FourRegresMatStim;      % same as Model3, except with fewer nuisance regressors
                     end
                     taskdesignmat_hrf=zeros(size(taskdesignmat));
@@ -434,7 +488,7 @@ if execute==1
                 %% REST NUISANCE REGRESSION %%%%%%%%%%%%%%
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 RERUN_RESTGLM=1; %Set to 1 if you want to run this procedure again
-                savedRestNuisRegfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_RestNuisanceGLMVars.mat'];
+                savedRestNuisRegfile=[subjTemporaryAnalysisDir subjName '_RestNuisanceGLMVars.mat']; %renamed on 1/7/18
 
                 %Only execute this if RERUN_TASKGLM==1 or the savedRestNuisRegfile doesn't exist for this subject, but skip if no TASKRUNS (i.e., only rest data are included)
                 if and(~isempty(func_info.RESTRUNS), or(RERUN_RESTGLM == 1, ~exist(savedRestNuisRegfile, 'file')))
@@ -470,7 +524,11 @@ if execute==1
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 %Set to 1 if you want to run this procedure again for subjects that already had it run before (otherwise it will load from previously saved files)
                 RERUN_TASKGLM=1;
-                savedTaskNuisRegGLMfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_TaskGLM.mat'];
+                if exp=='v'
+                    savedTaskNuisRegGLMfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_TaskGLM.mat'];
+                elseif exp=='c'
+                    savedTaskNuisRegGLMfile=[subjTemporaryAnalysisDir 'Contour_' subjName '_TaskGLM.mat'];
+                end
 
                 %Only execute this if RERUN_TASKGLM==1 or the savedTaskNuisRegGLMfile doesn't exist for this subject, but skip if no TASKRUNS (i.e., only rest data are included)
                 if and(~isempty(func_info.TASKRUNS), or(RERUN_TASKGLM == 1, ~exist(savedTaskNuisRegGLMfile, 'file')))
@@ -478,9 +536,9 @@ if execute==1
 
                     % Specify the number of nuisance regressors
                    NUMREGRESSORS_NUISANCE=16;
-                   if modeli>=5
-                        NUMREGRESSORS_NUISANCE=NUMREGRESSORS_NUISANCE-12 %removing 12 motion regressors
-                    end
+%                    if modeli>=5
+%                         NUMREGRESSORS_NUISANCE=NUMREGRESSORS_NUISANCE-12 %removing 12 motion regressors
+%                     end
 
                     % Add 2 regressors for GSR
                     if GSR
@@ -513,7 +571,11 @@ if execute==1
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 %Set to 1 if you want to run this procedure again for subjects that already had it run before (otherwise it will load from previously saved files)
                 RERUN_TEMPORALFILTER=1;
-                savedTempFiltGLMfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_TemporalFilter.mat'];
+                if exp=='v'
+                    savedTempFiltGLMfile=[subjTemporaryAnalysisDir 'Viscomp_' subjName '_TemporalFilter.mat'];
+                elseif exp=='c'
+                    savedTempFiltGLMfile=[subjTemporaryAnalysisDir 'Contour_' subjName '_TemporalFilter.mat'];
+                end
                 if IMPLEMENT_MOTIONSCRUBBING==2
                     %Only execute this if RERUN_TEMPORALFILTER==1 or the savedTempFiltGLMfile doesn't exist for this subject, but skip if TEMPORALFILTER==0
                     if or(RERUN_TEMPORALFILTER == 1, ~exist(savedTempFiltGLMfile, 'file'))
