@@ -11,8 +11,9 @@
 % Model1: stimulus trials (1 regressor)
 % Model2: stimulus (align/misalign) (2 regressors)
 % Model3: RT only  (2 regressors; align/misalign)
-% Model4 stimulus + RT (4 regressors; align: stim,RT; misalign: stim,RT)
+% Model4: stimulus + RT (4 regressors; align: stim,RT; misalign: stim,RT)
 % Model5: same as model 2, except uses stimulus duration
+% Model6: same as Model2, except that an extra regressor was added for catch trials
 
 % This function runs preprocessing and GLM analysis, after the HCP minimal preproccessing pipeline has been run.
 % It is designed to parcellate a dataset into a set of regions, which are then preprocessed.
